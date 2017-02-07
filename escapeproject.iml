@@ -7,6 +7,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
     <orderEntry type="library" name="simplegraphics " level="project" />
+=======
+    <orderEntry type="library" name="simplegraphics " level="application" />
+    <orderEntry type="library" name="simplegraphics" level="project" />
+    <orderEntry type="library" name="simplegraphics" level="project" />
+>>>>>>> df77cd5460ee5a9d0cc45f000010738027669853
   </component>
 </module>
