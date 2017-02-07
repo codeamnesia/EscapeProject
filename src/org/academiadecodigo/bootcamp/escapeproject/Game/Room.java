@@ -1,7 +1,8 @@
 package org.academiadecodigo.bootcamp.escapeproject.Game;
 
 
-import org.academiadecodigo.bootcamp.escapeproject.Character.Player;
+
+import org.academiadecodigo.bootcamp.escapeproject.Character.Sprite;
 
 /**
  * Created by codecadet on 05/02/17.
@@ -10,7 +11,7 @@ public class Room {
 
 
 
-    private Player player;
+    private Sprite sprite
     private int width;
     private int heigth;
     private boolean closed;
@@ -19,7 +20,7 @@ public class Room {
     public Room(int width, int heigth){
         this.heigth= heigth;
         this.width = width;
-        player = new Player();
+        sprite = new Sprite();
 
 
     }
@@ -27,7 +28,7 @@ public class Room {
 
 
 public boolean isClosed(){
-    if(player.getPos)
+    if(sprite.getPos)
 }
 
 

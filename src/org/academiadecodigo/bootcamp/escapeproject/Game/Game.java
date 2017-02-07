@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.Game;
 
-import org.academiadecodigo.bootcamp.escapeproject.Character.Player;
+import org.academiadecodigo.bootcamp.escapeproject.Character.Sprite;
 
 /**
  * Created by codecadet on 05/02/17.
@@ -8,7 +8,7 @@ import org.academiadecodigo.bootcamp.escapeproject.Character.Player;
 public class Game {
 
     private Grid grid;
-    private Player[] player;
+    private Sprite [] sprites;
     int numCharacter = 1;
 
 
@@ -26,7 +26,7 @@ public class Game {
         grid.init();
 
 
-        player = new Player[numCharacter];
+        sprites = new Sprite[numCharacter];
 
 
         for (int i = 0; i < numCharacter; i++) {

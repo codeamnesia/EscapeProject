@@ -10,15 +10,16 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  * Created by codecadet on 05/02/17.
  */
 
-//I had to call it Player because Character is reserved in Java;
+//I had to call it Player because Character is reserved in Java, also Luis made the sprite movements Sofia is going to make the actual sprite
 
 
 
 
-public class Player implements KeyboardHandler {
+public class Sprite implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Position pos;
+    public boolean isDoor;
 
 
     public void move(Keyboard keyboard) {
@@ -79,8 +80,10 @@ public class Player implements KeyboardHandler {
 
     }
 
-
-    private Position getPos(){
+    public void collision(){
+        if(pos.equals())
+    }
+    public Position getPos(){
         return pos;
     }
 

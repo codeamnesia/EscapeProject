@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.escapeproject.Game;
 
-import org.academiadecodigo.bootcamp.escapeproject.Character.Player;
+import org.academiadecodigo.bootcamp.escapeproject.Character.CollisionDetector;
+import org.academiadecodigo.bootcamp.escapeproject.Character.Sprite;
 
 /**
  * Created by codecadet on 05/02/17.
@@ -11,7 +12,8 @@ public class Grid {
     private Room room;
     private int width;
     private int height;
-    private Player player;
+    private Sprite sprite;
+    private CollisionDetector collisionDetector;
 
 
 
@@ -20,11 +22,14 @@ public class Grid {
     Grid(int height, int width){
         this.height = height;
         this.width = width;
-        player = new Player();
+        sprite = new Sprite();
 
 
 
     }
+
+
+
     public void init() {
 
 
@@ -39,7 +44,7 @@ public class Grid {
 
 
     public void openScreen(){
-        if (player.){
+        if (sprite.isDoor){
             ;
         }
     }
