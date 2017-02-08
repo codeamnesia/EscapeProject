@@ -16,8 +16,17 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 
 public class Sprite implements KeyboardHandler {
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
 
-    private Keyboard keyboard;
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+    }
+
+    /*private Keyboard keyboard;
     private Position pos;
     public boolean isDoor;
 
@@ -52,7 +61,7 @@ public class Sprite implements KeyboardHandler {
     public void keyPressed(KeyboardEvent e) {
         switch(e.getKey()){
 
-           /*
+
            case KeyboardEvent.KEY_UP:
                 .translate(0, -100);
                 break;
@@ -69,11 +78,16 @@ public class Sprite implements KeyboardHandler {
                 pic.translate(50, 0);
                 break;
 
-*/
+
         }
 
 
 
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+    }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
@@ -85,7 +99,7 @@ public class Sprite implements KeyboardHandler {
     }
     public Position getPos(){
         return pos;
-    }
+    }*/
 
 
 

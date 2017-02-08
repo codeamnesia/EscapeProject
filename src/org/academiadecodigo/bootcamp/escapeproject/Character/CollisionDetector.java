@@ -21,17 +21,17 @@ public class CollisionDetector {
 
 
 
-    public void inDoor(Sprite sprite){
+   /* public void inDoor(Sprite sprite){
         if(sprite.getPos().equals(door.getPos)){
             collided = true;
         }
 
 //TODO Make a collision detector
-        /**
+        *
          * Checks for collisions with specific car
          * Requires iterating the array once
          * @param sprite
-         */
+
         public void check(Sprite sprite) {
 
             for (Sprite sprite1: sprite) {
@@ -49,5 +49,5 @@ public class CollisionDetector {
 
         }
 
-    }
+    }*/
 }

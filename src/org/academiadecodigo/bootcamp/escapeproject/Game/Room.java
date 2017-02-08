@@ -11,7 +11,7 @@ public class Room {
 
 
 
-    private Sprite sprite
+   /* private Sprite sprite;
     private int width;
     private int heigth;
     private boolean closed;
@@ -28,8 +28,8 @@ public class Room {
 
 
 public boolean isClosed(){
-    if(sprite.getPos)
-}
+    if(sprite.getPos);
+}*/
 
 
 }
