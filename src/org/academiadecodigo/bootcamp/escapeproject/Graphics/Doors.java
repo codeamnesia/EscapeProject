@@ -16,7 +16,7 @@ public class Doors implements MouseHandler{
 
 
     private Rectangle scene;
-    private Picture backgroud;
+    private Picture background;
     private Picture[][] picsPadawan;
 
     private Picture door1;
@@ -29,8 +29,8 @@ public class Doors implements MouseHandler{
 
     private int theOnePayingAttention;
     private boolean[] isPayingAttention = {false, false, false};
-    boolean caughtAttention;
-    int clickCounter;
+    private boolean caughtAttention;
+    private int clickCounter;
 
     private static final int MAX_NUMBER_OF_CLICKS = 5;
 
@@ -50,8 +50,8 @@ public class Doors implements MouseHandler{
         scene.setColor(Color.BLACK);
         scene.draw();
 
-        backgroud = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
-        backgroud.draw();
+        background = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
+        background.draw();
 
         picsPadawan = new Picture[3][4];
 
@@ -90,11 +90,11 @@ public class Doors implements MouseHandler{
 
         while(true) {
 
-            this.deleteRectangles();
+            this.deletePadPictures();
 
             this.randomizeCharacters();
 
-            Thread.sleep(this.randomTime());
+            Thread.sleep(DoorsUtil.randomTime());
 
             if (caughtAttention) {
                 this.openDoor();
@@ -107,8 +107,6 @@ public class Doors implements MouseHandler{
             }
 
         }
-
-
 
     }
 
@@ -155,24 +153,20 @@ public class Doors implements MouseHandler{
 
     }
 
-
     private void looseChance() {
-        Text text = new Text(200, 180, "You lost your chance!!!");
+        Text text = new Text(300, 200, "You lost your chance!!!");
+        text.grow(200.0, 20.0);
         text.setColor(Color.MAGENTA);
         text.draw();
     }
 
-    private void deleteRectangles() {
+    private void deletePadPictures() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
                 picsPadawan[i][j].delete();
             }
         }
 
-    }
-
-    private long randomTime() {
-        return 800 + (long) (Math.random() * 500);
     }
 
     private boolean randomizeCharacters() {
@@ -182,58 +176,39 @@ public class Doors implements MouseHandler{
             b = false;
         }
 
-        if (this.isSomeOnePayingAttention()) {
-            theOnePayingAttention = this.whoIsPayingAttention();
+        if (DoorsUtil.isSomeOnePayingAttention()) {
+            theOnePayingAttention = DoorsUtil.whoIsPayingAttention();
             picsPadawan[theOnePayingAttention][3].draw();
             isPayingAttention[theOnePayingAttention] = true;
         }
 
         for(int i = 0; i < picsPadawan.length; i++){
             if (i != theOnePayingAttention) {
-                picsPadawan[i][this.randomizeColors()].draw();
+                picsPadawan[i][DoorsUtil.randomizeDistracted()].draw();
             }
         }
 
         return false;
     }
 
-    private int randomizeColors() {
-        return (int) (Math.random() * 3);
-    }
-
-    private int whoIsPayingAttention() {
-        return (int) (Math.random() * 3);
-    }
-
-    private boolean isSomeOnePayingAttention() {
-        return Math.random() < 0.3;
-    }
-
     @Override
     public void mouseClicked(MouseEvent e){
 
-        if (theOnePayingAttention != -1 && e.getX() >= picsPadawan[theOnePayingAttention][3].getX()
-                && e.getX() <= picsPadawan[theOnePayingAttention][3].getX() + picsPadawan[theOnePayingAttention][3].getWidth()
-                && e.getY() - 23 >= picsPadawan[theOnePayingAttention][3].getY()
-                && e.getY() - 23 <= picsPadawan[theOnePayingAttention][3].getY() + picsPadawan[theOnePayingAttention][3].getHeight()
-                && isPayingAttention[theOnePayingAttention]) {
-            picsPadawan[theOnePayingAttention][3].grow(20.0, 50.0);
+        if (theOnePayingAttention != -1 && DoorsUtil.isWithin(e, picsPadawan[theOnePayingAttention][3]) && isPayingAttention[theOnePayingAttention]) {
+            if (!caughtAttention) {
+                picsPadawan[theOnePayingAttention][3].grow(20.0, 50.0);
+            }
             caughtAttention = true;
+
         }
         clickCounter++;
         System.out.println(e);
-
     }
+
 
     @Override
     public void mouseMoved(MouseEvent e) {
         System.out.println(e);
 
     }
-
-
-
-
-
-
 }
