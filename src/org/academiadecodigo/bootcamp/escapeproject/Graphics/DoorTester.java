@@ -7,7 +7,9 @@ public class DoorTester {
 
     public static void main(String[] args) throws InterruptedException{
 
-        Doors doors = new Doors();
+        //Doors doors = new Doors();
+
+        FinalDoor finalDoor = new FinalDoor();
 
     }
 
