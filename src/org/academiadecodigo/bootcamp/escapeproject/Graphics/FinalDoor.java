@@ -112,17 +112,17 @@ public class FinalDoor implements MouseHandler {
 
         mobile0 = new Rectangle(350, 509, 45, 30);
         mobile0.setColor(Color.YELLOW);
-        mobile0.draw();
+        //mobile0.draw();
 
 
         mobile1 = new Rectangle(290, 397, 45, 30);
         mobile1.setColor(Color.YELLOW);
-        mobile1.draw();
+        //mobile1.draw();
 
 
         smallMobile = new Rectangle(590, 503, 45, 30);
         smallMobile.setColor(Color.YELLOW);
-        smallMobile.draw();
+        //smallMobile.draw();
 
         mobileStr1 = "";
         mobileStr2 = "";
@@ -148,18 +148,36 @@ public class FinalDoor implements MouseHandler {
         this.openDoor();
     }
 
-    private void startBigMobile() {
+    private void startBigMobile () throws InterruptedException {
+
+        bigMobille.grow(-80,-200);
         bigMobille.draw();
+
+        Thread.sleep(100);
+
+        bigMobille.grow(20,50);
+        bigMobille.draw();
+
+        Thread.sleep(100);
+
+        bigMobille.grow(20,50);
+        bigMobille.draw();
+
+        Thread.sleep(100);
+
+        bigMobille.grow(20,50);
+        bigMobille.draw();
+
+        Thread.sleep(100);
+
+        bigMobille.grow(20,50);
+        bigMobille.draw();
+
         mobileActive = true;
-        mobile0.draw();
-        mobile1.draw();
-        mobile0.draw();
         mobileText1.draw();
         mobileText2.draw();
         mobileText3.draw();
     }
-
-
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -170,9 +188,9 @@ public class FinalDoor implements MouseHandler {
            mobileActive = true;
         }
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8) {
+        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8 && mobileActive) {
             write0ln1();
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() < 8) {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() < 8 && mobileActive) {
             write1ln1();
 
         }
@@ -189,9 +207,9 @@ public class FinalDoor implements MouseHandler {
             return;
         }
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 ) {
+        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 && mobileActive) {
             write0ln2();
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 && mobileActive) {
             write1ln2();
         }
         checkF2.delete();
@@ -207,9 +225,9 @@ public class FinalDoor implements MouseHandler {
             return;
         }
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
+        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8 && mobileActive) {
             write0ln3();
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8 && mobileActive) {
             write1ln3();
         }
         checkF3.delete();
@@ -237,6 +255,9 @@ public class FinalDoor implements MouseHandler {
         mobileText1.delete();
         mobileText2.delete();
         mobileText3.delete();
+        mobileText1.delete();
+        mobileText2.delete();
+        mobileText3.delete();
 
         fdoor1 = new Picture(430, 235, "resources/pics/fd1.png");
         fdoor2 = new Picture(430, 235, "resources/pics/fd2.png");
@@ -250,7 +271,7 @@ public class FinalDoor implements MouseHandler {
         bigMobille.delete();
         smallMobille.delete();
 
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         fdoor1.draw();
         fdoor7.delete();
@@ -285,16 +306,18 @@ public class FinalDoor implements MouseHandler {
         fdoor7.draw();
         fdoor6.delete();
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         this.finished();
     }
 
     //GOD'S appearence
     private void finished() {
+        
+        godRui = new Picture(60.0, 60.0, "resources/pics/godRui.jpg");
 
         background.delete();
-        godRui = new Picture(60.0, 60.0, "resources/pics/godRui.jpg");
+
         godRui.draw();
 
     }
