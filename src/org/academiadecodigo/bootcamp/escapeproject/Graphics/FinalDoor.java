@@ -32,6 +32,11 @@ public class FinalDoor implements MouseHandler {
     private String mobileStr2;
     private String mobileStr3;
 
+    //Text to compare de Text Box
+    private String mobileStr1T;
+    private String mobileStr2T;
+    private String mobileStr3T;
+
     //Checked text
     private Text checkT1;
     private Text checkF1;
@@ -108,6 +113,10 @@ public class FinalDoor implements MouseHandler {
         mobileStr2 = "";
         mobileStr3 = "";
 
+        mobileStr1T = "00000000";
+        mobileStr2T = "00000000";
+        mobileStr3T = "00000000";
+
         mobileText1 = new Text(325, 230, mobileStr1);
         mobileText2 = new Text(325, 250, mobileStr2);
         mobileText3 = new Text(325, 270, mobileStr3);
@@ -115,16 +124,6 @@ public class FinalDoor implements MouseHandler {
         mobileText1.draw();
         mobileText2.draw();
         mobileText3.draw();
-
-        //first Line code check
-        checkT1 = new Text(400, 230, "true");
-        checkT1.draw();
-        checkF1 = new Text(400, 230, "false");
-
-        //second Line code check
-        checkT2 = new Text(400, 250, "true");
-        checkT2.draw();
-        checkF2 = new Text(400, 250, "false");
 
         //Third Line code check
         checkT3 = new Text(400, 270, "true");
@@ -188,42 +187,44 @@ public class FinalDoor implements MouseHandler {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length()<=8) {
+        System.out.println("ola");
+
+        if (mobileStr1.length() == 8) {
+            if (!mobileStr1.equals(mobileStr1T)) {
+                mobileStr1 = "";
+                return;
+            }
+        }
+        System.out.println("ola2");
+
+        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8) {
             write0ln1();
-        }
-        if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length()<=8) {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() < 8) {
             write1ln1();
-        }
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length()>8 && mobileStr2.length()<=8) {
+
+        } else if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8)
+
+        {
             write0ln2();
-        }
-        if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length()>8 && mobileStr2.length()<=8 ) {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8)
+
+        {
             write1ln2();
-        }
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length()>8 && mobileStr2.length()>8 && mobileStr3.length()<=8) {
+        } else if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8)
+
+        {
             write0ln3();
-        }
-        if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length()<=8 && mobileStr2.length()>8 && mobileStr3.length()<=8) {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8)
+
+        {
             write1ln3();
         }
-
-
-
-
-
-
-
-
-
-
-
         System.out.println(e);
     }
 
 
-
-    private void write1ln1 () {
-        mobileStr1+= "1";
+    private void write1ln1() {
+        mobileStr1 += "1";
         mobileText1.setText(mobileStr1);
         mobileText1.draw();
     }
@@ -234,8 +235,8 @@ public class FinalDoor implements MouseHandler {
         mobileText1.draw();
     }
 
-    private void write1ln2 () {
-        mobileStr2+= "1";
+    private void write1ln2() {
+        mobileStr2 += "1";
         mobileText2.setText(mobileStr2);
         mobileText2.draw();
     }
@@ -246,8 +247,8 @@ public class FinalDoor implements MouseHandler {
         mobileText2.draw();
     }
 
-    private void write1ln3 () {
-        mobileStr3+= "1";
+    private void write1ln3() {
+        mobileStr3 += "1";
         mobileText3.setText(mobileStr3);
         mobileText3.draw();
     }
