@@ -2,7 +2,7 @@
 //
 //
 //
-//import org.academiadecodigo.bootcamp.escapeproject.Character.Sprite;
+//import org.academiadecodigo.bootcamp.escapeproject.Game.gameObjects.Sprite;
 //
 ///**
 // * Created by codecadet on 05/02/17.
