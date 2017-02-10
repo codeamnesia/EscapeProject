@@ -29,6 +29,7 @@ public class Doors implements MouseHandler{
     private Picture door6;
     private Picture door7;
 
+
     private int theOnePayingAttention;
     private boolean[] isPayingAttention = {false, false, false};
     private boolean caughtAttention;
@@ -52,6 +53,7 @@ public class Doors implements MouseHandler{
         scene.setColor(Color.BLACK);
         scene.draw();
 
+        //Creates Background picture for questions levels
         background = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
         background.draw();
 
@@ -71,6 +73,8 @@ public class Doors implements MouseHandler{
         picsPadawan[2][1] = new Picture(600.0, 225.0, "resources/pics/r3.png");
         picsPadawan[2][2] = new Picture(600.0, 225.0, "resources/pics/r4.png");
         picsPadawan[2][3] = new Picture(600.0, 225.0, "resources/pics/Rpointer.png");
+
+        //Instance level doors
 
         door1 = new Picture(315.0, 125.0, "resources/pics/d1.png");
         door2 = new Picture(315.0, 125.0, "resources/pics/d2.png");
@@ -111,6 +115,7 @@ public class Doors implements MouseHandler{
         }
 
     }
+
 
     private void openDoor() throws InterruptedException {
 
