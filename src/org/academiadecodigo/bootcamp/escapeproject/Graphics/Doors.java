@@ -9,6 +9,8 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.awt.*;
+
 /**
  * Created by codecadet on 08/02/17.
  */
@@ -117,6 +119,8 @@ public class Doors implements MouseHandler{
 
     private void openDoor() throws InterruptedException {
 
+        makePadawansDisapear();
+
         while(true) {
 
             door7.draw();
@@ -155,6 +159,21 @@ public class Doors implements MouseHandler{
             Thread.sleep(1000);
 
         }
+
+    }
+
+    private void makePadawansDisapear() throws InterruptedException{
+
+        for (int k = 0; k < 10; k++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 4; j++) {
+                    picsPadawan[i][j].grow(-5.0, -10.0);
+                    Thread.sleep(15);
+                }
+            }
+        }
+        deletePadPictures();
+        Thread.sleep(30);
 
     }
 

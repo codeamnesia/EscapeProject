@@ -23,6 +23,13 @@ public class FinalDoor implements MouseHandler {
     private Picture bigMobille;
     private Picture godRui;
 
+
+    private int clickCounter;
+    
+private static final int MAX_NUMBER_OF_CLICKS = 5;
+
+
+    public FinalDoor() throws InterruptedException {
     //Text box for mobile screen
     private Text mobileText1;
     private Text mobileText2;
@@ -89,6 +96,7 @@ public class FinalDoor implements MouseHandler {
         background = new Picture(60.0, 60.0, "resources/pics/finalback.png");
         background.draw();
 
+
         fdoor1 = new Picture(430, 235, "resources/pics/fd1.png");
         fdoor2 = new Picture(430, 235, "resources/pics/fd2.png");
         fdoor3 = new Picture(430, 235, "resources/pics/fd3.png");
@@ -97,14 +105,28 @@ public class FinalDoor implements MouseHandler {
         fdoor6 = new Picture(430, 235, "resources/pics/fd6.png");
         fdoor7 = new Picture(430, 235, "resources/pics/fd7.png");
 
+
         this.start();
 
     }
+    public void start() {
 
     public void start() throws InterruptedException {
 
+
         smallMobille = new Picture(586.0, 503.0, "resources/pics/mbsmall.png");
         smallMobille.draw();
+
+
+        bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
+        bigMobille.draw();
+
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e){
+        System.out.println(e);
 
 
         bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
@@ -296,12 +318,21 @@ public class FinalDoor implements MouseHandler {
         mobileStr3 += "0";
         mobileText3.setText(mobileStr3);
         mobileText3.draw();
+
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
+
+        System.out.println(e);
+
+    }
+
+}
+
         //System.out.println(e);
 
     }
 
 }
+
