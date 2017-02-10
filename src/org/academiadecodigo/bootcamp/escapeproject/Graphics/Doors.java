@@ -116,7 +116,6 @@ public class Doors implements MouseHandler{
 
     }
 
-
     private void openDoor() throws InterruptedException {
 
         makePadawansDisapear();

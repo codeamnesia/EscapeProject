@@ -62,7 +62,11 @@ public class FinalDoor implements MouseHandler {
     private boolean checked2;
     private boolean checked3;
 
+    //boolean to check open door
+    private boolean openDoor;
+
     public FinalDoor() throws InterruptedException {
+
         checkF1 = new Text(400, 230, "false");
         checkT1 = new Text(400, 230, "true");
         checkF2 = new Text(400, 250, "false");
@@ -90,16 +94,6 @@ public class FinalDoor implements MouseHandler {
         background = new Picture(60.0, 60.0, "resources/pics/finalback.png");
         background.draw();
 
-
-        fdoor1 = new Picture(430, 235, "resources/pics/fd1.png");
-        fdoor2 = new Picture(430, 235, "resources/pics/fd2.png");
-        fdoor3 = new Picture(430, 235, "resources/pics/fd3.png");
-        fdoor4 = new Picture(430, 235, "resources/pics/fd4.png");
-        fdoor5 = new Picture(430, 235, "resources/pics/fd5.png");
-        fdoor6 = new Picture(430, 235, "resources/pics/fd6.png");
-        fdoor7 = new Picture(430, 235, "resources/pics/fd7.png");
-
-
         this.start();
 
     }
@@ -109,11 +103,6 @@ public class FinalDoor implements MouseHandler {
 
         smallMobille = new Picture(586.0, 503.0, "resources/pics/mbsmall.png");
         smallMobille.draw();
-
-
-        bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
-        bigMobille.draw();
-
 
         bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
         bigMobille.draw();
@@ -143,61 +132,18 @@ public class FinalDoor implements MouseHandler {
         mobileText2.draw();
         mobileText3.draw();
 
-    }
 
-
-    //final animation for exit doors
-    private void openDoor() throws InterruptedException {
-
-        try {
-            while (true) {
-
-                fdoor1.draw();
-                fdoor7.delete();
-
-                Thread.sleep(200);
-
-                fdoor2.draw();
-                fdoor1.delete();
-
-                Thread.sleep(200);
-
-                fdoor3.draw();
-                fdoor2.delete();
-
-                Thread.sleep(200);
-
-                fdoor4.draw();
-                fdoor3.delete();
-
-                Thread.sleep(200);
-
-                fdoor5.draw();
-                fdoor4.delete();
-
-                Thread.sleep(200);
-
-                fdoor6.draw();
-                fdoor5.delete();
-
-                Thread.sleep(200);
-
-                fdoor7.draw();
-                fdoor6.delete();
-
-                Thread.sleep(1000);
-
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-
+        while (!openDoor) {
+            System.out.println("test");
         }
-
+        this.openDoor();
     }
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+        //TODO remove all of this for a method don't know how for sure
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8) {
             write0ln1();
@@ -252,26 +198,84 @@ public class FinalDoor implements MouseHandler {
         checkF3.delete();
         if (mobileStr3.length() == 8 && !checked3) {
             if (!mobileStr3.equals(mobileStr3T)) {
+                checked3 = true;
                 mobileStr3 = "";
-
                 checkF3.draw();
+                System.out.println(openDoor);
                 return;
             }
-
             checkT3.draw();
-            checked3 = true;
-            return;
+            openDoor = true;
         }
         System.out.println(e);
+    }
 
-        godRui = new Picture()
-        if () {
+    //final animation for exit doors
+    private void openDoor() throws InterruptedException {
 
-            // this.openDoor();
-        }
+        fdoor1 = new Picture(430, 235, "resources/pics/fd1.png");
+        fdoor2 = new Picture(430, 235, "resources/pics/fd2.png");
+        fdoor3 = new Picture(430, 235, "resources/pics/fd3.png");
+        fdoor4 = new Picture(430, 235, "resources/pics/fd4.png");
+        fdoor5 = new Picture(430, 235, "resources/pics/fd5.png");
+        fdoor6 = new Picture(430, 235, "resources/pics/fd6.png");
+        fdoor7 = new Picture(430, 235, "resources/pics/fd7.png");
 
 
-        //Writes on Mobile screen 1 line 1
+        bigMobille.delete();
+        smallMobille.delete();
+
+        Thread.sleep(2000);
+
+        fdoor1.draw();
+        fdoor7.delete();
+
+        Thread.sleep(200);
+
+        fdoor2.draw();
+        fdoor1.delete();
+
+        Thread.sleep(200);
+
+        fdoor3.draw();
+        fdoor2.delete();
+
+        Thread.sleep(200);
+
+        fdoor4.draw();
+        fdoor3.delete();
+
+        Thread.sleep(200);
+
+        fdoor5.draw();
+        fdoor4.delete();
+
+        Thread.sleep(200);
+
+        fdoor6.draw();
+        fdoor5.delete();
+
+        Thread.sleep(200);
+
+        fdoor7.draw();
+        fdoor6.delete();
+        background.delete();
+
+        Thread.sleep(2000);
+
+        this.finished();
+    }
+
+    //GOD'S appearence
+    private void finished() {
+
+        background.delete();
+        godRui = new Picture(60.0, 60.0, "resources/pics/godRui.jpg");
+        godRui.draw();
+
+    }
+
+    //Writes on Mobile screen 1 line 1
 
     private void write1ln1() {
         mobileStr1 += "1";
@@ -279,6 +283,8 @@ public class FinalDoor implements MouseHandler {
         mobileText1.draw();
     }
 
+
+    //TODO passar como argumento a propr
     //Writes on Mobile screen 0 line 1
     private void write0ln1() {
         mobileStr1 += "0";
