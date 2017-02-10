@@ -24,12 +24,6 @@ public class FinalDoor implements MouseHandler {
     private Picture godRui;
 
 
-    private int clickCounter;
-    
-private static final int MAX_NUMBER_OF_CLICKS = 5;
-
-
-    public FinalDoor() throws InterruptedException {
     //Text box for mobile screen
     private Text mobileText1;
     private Text mobileText2;
@@ -109,7 +103,6 @@ private static final int MAX_NUMBER_OF_CLICKS = 5;
         this.start();
 
     }
-    public void start() {
 
     public void start() throws InterruptedException {
 
@@ -120,13 +113,6 @@ private static final int MAX_NUMBER_OF_CLICKS = 5;
 
         bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
         bigMobille.draw();
-
-
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e){
-        System.out.println(e);
 
 
         bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
@@ -160,6 +146,7 @@ private static final int MAX_NUMBER_OF_CLICKS = 5;
     }
 
 
+    //final animation for exit doors
     private void openDoor() throws InterruptedException {
 
         try {
@@ -277,12 +264,14 @@ private static final int MAX_NUMBER_OF_CLICKS = 5;
         }
         System.out.println(e);
 
-         godRui = new Picture()
-        if(){
+        godRui = new Picture()
+        if () {
 
-        // this.openDoor();
-    }
+            // this.openDoor();
+        }
 
+
+        //Writes on Mobile screen 1 line 1
 
     private void write1ln1() {
         mobileStr1 += "1";
@@ -290,30 +279,36 @@ private static final int MAX_NUMBER_OF_CLICKS = 5;
         mobileText1.draw();
     }
 
+    //Writes on Mobile screen 0 line 1
     private void write0ln1() {
         mobileStr1 += "0";
         mobileText1.setText(mobileStr1);
         mobileText1.draw();
     }
 
+
+    //Writes on Mobile screen 1 line 2
     private void write1ln2() {
         mobileStr2 += "1";
         mobileText2.setText(mobileStr2);
         mobileText2.draw();
     }
 
+    //Writes on Mobile screen 0 line 2
     private void write0ln2() {
         mobileStr2 += "0";
         mobileText2.setText(mobileStr2);
         mobileText2.draw();
     }
 
+    //Writes on Mobile screen 1 line 3
     private void write1ln3() {
         mobileStr3 += "1";
         mobileText3.setText(mobileStr3);
         mobileText3.draw();
     }
 
+    //Writes on Mobile screen 0 line 3
     private void write0ln3() {
         mobileStr3 += "0";
         mobileText3.setText(mobileStr3);
@@ -324,15 +319,15 @@ private static final int MAX_NUMBER_OF_CLICKS = 5;
     @Override
     public void mouseMoved(MouseEvent e) {
 
-        System.out.println(e);
+        // System.out.println(e);
 
     }
 
 }
 
-        //System.out.println(e);
 
-    }
 
-}
+
+
+
 
