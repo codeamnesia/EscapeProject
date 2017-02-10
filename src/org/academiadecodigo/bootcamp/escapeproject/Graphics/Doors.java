@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
+import org.academiadecodigo.bootcamp.escapeproject.Game.Questions;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -20,6 +21,8 @@ public class Doors implements MouseHandler{
     private Rectangle scene;
     private Picture background;
     private Picture[][] picsPadawan;
+
+    private Questions questions;
 
     private Picture door1;
     private Picture door2;
@@ -45,6 +48,8 @@ public class Doors implements MouseHandler{
     }
 
     private void init() throws InterruptedException{
+
+        questions = new Questions();
 
         Mouse m = new Mouse(this);
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
@@ -103,6 +108,9 @@ public class Doors implements MouseHandler{
             Thread.sleep(DoorsUtil.randomTime());
 
             if (caughtAttention) {
+
+                questions.start();
+
                 this.openDoor();
                 break;
             }
