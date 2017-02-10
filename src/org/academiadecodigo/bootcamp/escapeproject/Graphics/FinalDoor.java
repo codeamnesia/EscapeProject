@@ -1,3 +1,4 @@
+/*
 package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -10,9 +11,10 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-/**
+*
  * Created by codecadet on 08/02/17.
- */
+
+
 public class FinalDoor implements MouseHandler {
 
     private Rectangle scene;
@@ -331,3 +333,4 @@ public class FinalDoor implements MouseHandler {
 
 
 
+*/

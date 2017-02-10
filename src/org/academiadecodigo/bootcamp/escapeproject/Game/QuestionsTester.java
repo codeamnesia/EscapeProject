@@ -1,10 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.Game;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
+import org.academiadecodigo.bootcamp.escapeproject.Graphics.Questions;
 
 /**
  * Created by codecadet on 09/02/17.
