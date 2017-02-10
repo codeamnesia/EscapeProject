@@ -187,38 +187,65 @@ public class FinalDoor implements MouseHandler {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        System.out.println("ola");
-
-        if (mobileStr1.length() == 8) {
-            if (!mobileStr1.equals(mobileStr1T)) {
-                mobileStr1 = "";
-                return;
-            }
-        }
-        System.out.println("ola2");
+        //TODO checkar saidas da 2 line false e outros....
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8) {
             write0ln1();
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() < 8) {
             write1ln1();
+        }
 
-        } else if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8)
+        if (mobileStr1.length() == 8) {
+            System.out.println("actually not here");
+            if (!mobileStr1.equals(mobileStr1T)) {
+                mobileStr1 = "";
+                checkF1 = new Text(400, 230, "false");
+                checkF1.draw();
+                return;
+            }
+            checkF1.delete();
+            checkT1 = new Text(400, 230, "true");
+            checkT1.draw();
+        }
 
-        {
+
+        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
             write0ln2();
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8)
-
-        {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
             write1ln2();
-        } else if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8)
 
-        {
+            if (mobileStr2.length() == 8) {
+                if (!mobileStr2.equals(mobileStr2T)) {
+                    mobileStr2 = "";
+                    checkF2 = new Text(400, 250, "false");
+                    checkF2.draw();
+                    return;
+                }
+                checkF2.delete();
+                checkT2 = new Text(400, 250, "true");
+                checkT2.draw();
+            }
+
+        } else if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
             write0ln3();
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8)
-
-        {
+        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
             write1ln3();
         }
+
+        if (mobileStr3.length() == 8) {
+            if (!mobileStr3.equals(mobileStr3T)) {
+                mobileStr3 = "";
+                checkF3 = new Text(400, 260, "false");
+                checkF3.draw();
+                return;
+            }
+            checkF3.delete();
+            checkT3 = new Text(400, 260, "true");
+            checkT3.draw();
+            checkT3.delete();
+        }
+
+
         System.out.println(e);
     }
 
@@ -261,7 +288,7 @@ public class FinalDoor implements MouseHandler {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println(e);
+        //System.out.println(e);
 
     }
 
