@@ -81,8 +81,6 @@ public class FinalDoor implements MouseHandler {
         checked2 = false;
         checked3 = false;
 
-        counter = 0;
-
 
         this.init();
 
@@ -152,7 +150,7 @@ public class FinalDoor implements MouseHandler {
         checkT3.draw();
         checkF3 = new Text(400, 270, "false");
         */
-        this.openDoor();
+//        this.openDoor();
 
     }
 
