@@ -10,6 +10,7 @@ public class DoorTester {
         //Doors doors = new Doors();
 
         FinalDoor finalDoor = new FinalDoor();
+        finalDoor.prompt();
 
         //FinalDoor finalDoor = new FinalDoor();
 

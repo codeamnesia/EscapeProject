@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
+import org.academiadecodigo.bootcamp.escapeproject.Scenable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -13,7 +14,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 /**
  * Created by codecadet on 08/02/17.
  */
-public class FinalDoor implements MouseHandler {
+public class FinalDoor implements MouseHandler, Scenable {
 
     private Rectangle scene;
     private Rectangle mobile0;
@@ -69,7 +70,7 @@ public class FinalDoor implements MouseHandler {
     //boolean to check if the small mobile phone has been clicked
     private boolean mobileActive;
 
-    public FinalDoor() throws InterruptedException {
+    public FinalDoor() {
 
         checkF1 = new Text(400, 230, "false");
         checkT1 = new Text(400, 230, "true");
@@ -81,12 +82,10 @@ public class FinalDoor implements MouseHandler {
         checked1 = false;
         checked2 = false;
         checked3 = false;
-
-        this.init();
-
     }
 
-    private void init() throws InterruptedException {
+    @Override
+    public void prompt() throws InterruptedException {
 
         Mouse m = new Mouse(this);
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
@@ -313,7 +312,7 @@ public class FinalDoor implements MouseHandler {
 
     //GOD'S appearence
     private void finished() {
-        
+
         godRui = new Picture(60.0, 60.0, "resources/pics/godRui.jpg");
 
         background.delete();
