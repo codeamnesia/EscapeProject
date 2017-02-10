@@ -18,6 +18,7 @@ public class FinalDoor implements MouseHandler {
     private Rectangle scene;
     private Rectangle mobile0;
     private Rectangle mobile1;
+    private Rectangle smallMobile;
     private Picture background;
     private Picture smallMobille;
     private Picture bigMobille;
@@ -65,6 +66,9 @@ public class FinalDoor implements MouseHandler {
     //boolean to check open door
     private boolean openDoor;
 
+    //boolean to check if the small mobile phone has been clicked
+    private boolean mobileActive;
+
     public FinalDoor() throws InterruptedException {
 
         checkF1 = new Text(400, 230, "false");
@@ -105,16 +109,20 @@ public class FinalDoor implements MouseHandler {
         smallMobille.draw();
 
         bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
-        bigMobille.draw();
 
         mobile0 = new Rectangle(350, 509, 45, 30);
         mobile0.setColor(Color.YELLOW);
         mobile0.draw();
 
+
         mobile1 = new Rectangle(290, 397, 45, 30);
         mobile1.setColor(Color.YELLOW);
         mobile1.draw();
 
+
+        smallMobile = new Rectangle(590, 503, 45, 30);
+        smallMobile.setColor(Color.YELLOW);
+        smallMobile.draw();
 
         mobileStr1 = "";
         mobileStr2 = "";
@@ -128,22 +136,39 @@ public class FinalDoor implements MouseHandler {
         mobileText2 = new Text(325, 250, mobileStr2);
         mobileText3 = new Text(325, 270, mobileStr3);
 
+        while (!mobileActive) {
+            Thread.sleep(5);
+        }
+        startBigMobile();
+
+        while (!openDoor) {
+            Thread.sleep(5);
+        }
+
+        this.openDoor();
+    }
+
+    private void startBigMobile() {
+        bigMobille.draw();
+        mobileActive = true;
+        mobile0.draw();
+        mobile1.draw();
+        mobile0.draw();
         mobileText1.draw();
         mobileText2.draw();
         mobileText3.draw();
-
-
-        while (!openDoor) {
-            System.out.println("test");
-        }
-        this.openDoor();
     }
+
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
         //TODO remove all of this for a method don't know how for sure
+
+        if (DoorsUtil.isWithin(e,smallMobile) ){
+           mobileActive = true;
+        }
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8) {
             write0ln1();
@@ -155,23 +180,16 @@ public class FinalDoor implements MouseHandler {
         if (mobileStr1.length() == 8 && !checked1) {
             if (!mobileStr1.equals(mobileStr1T)) {
                 mobileStr1 = "";
-
-                //removed checkF1 to somewhere I don't remember
-
                 checkF1.draw();
-//                checkF1.delete();
 
                 return;
             }
-
-            //removed checkT1 to constructor;
-
             checkT1.draw();
             checked1 = true;
             return;
         }
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
+        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 ) {
             write0ln2();
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
             write1ln2();
@@ -180,11 +198,10 @@ public class FinalDoor implements MouseHandler {
         if (mobileStr2.length() == 8 && !checked2) {
             if (!mobileStr2.equals(mobileStr2T)) {
                 mobileStr2 = "";
-                //removed checkF2 to constructor
+
                 checkF2.draw();
                 return;
             }
-            //removed checkT2 to constructor;
             checkT2.draw();
             checked2 = true;
             return;
@@ -206,6 +223,7 @@ public class FinalDoor implements MouseHandler {
             }
             checkT3.draw();
             openDoor = true;
+
         }
         System.out.println(e);
     }
@@ -213,19 +231,26 @@ public class FinalDoor implements MouseHandler {
     //final animation for exit doors
     private void openDoor() throws InterruptedException {
 
+        checkT3.delete();
+        checkT1.delete();
+        checkT2.delete();
+        mobileText1.delete();
+        mobileText2.delete();
+        mobileText3.delete();
+
         fdoor1 = new Picture(430, 235, "resources/pics/fd1.png");
         fdoor2 = new Picture(430, 235, "resources/pics/fd2.png");
-        fdoor3 = new Picture(430, 235, "resources/pics/fd3.png");
-        fdoor4 = new Picture(430, 235, "resources/pics/fd4.png");
-        fdoor5 = new Picture(430, 235, "resources/pics/fd5.png");
-        fdoor6 = new Picture(430, 235, "resources/pics/fd6.png");
-        fdoor7 = new Picture(430, 235, "resources/pics/fd7.png");
+        fdoor3 = new Picture(430, 236, "resources/pics/fd3.png");
+        fdoor4 = new Picture(430, 228, "resources/pics/fd4.png");
+        fdoor5 = new Picture(430, 230, "resources/pics/fd5.png");
+        fdoor6 = new Picture(430, 230, "resources/pics/fd6.png");
+        fdoor7 = new Picture(430, 230, "resources/pics/fd7.png");
 
 
         bigMobille.delete();
         smallMobille.delete();
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         fdoor1.draw();
         fdoor7.delete();
@@ -259,9 +284,8 @@ public class FinalDoor implements MouseHandler {
 
         fdoor7.draw();
         fdoor6.delete();
-        background.delete();
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         this.finished();
     }
@@ -275,6 +299,8 @@ public class FinalDoor implements MouseHandler {
 
     }
 
+    //TODO passar como argumento a propr
+
     //Writes on Mobile screen 1 line 1
 
     private void write1ln1() {
@@ -283,15 +309,12 @@ public class FinalDoor implements MouseHandler {
         mobileText1.draw();
     }
 
-
-    //TODO passar como argumento a propr
     //Writes on Mobile screen 0 line 1
     private void write0ln1() {
         mobileStr1 += "0";
         mobileText1.setText(mobileStr1);
         mobileText1.draw();
     }
-
 
     //Writes on Mobile screen 1 line 2
     private void write1ln2() {
