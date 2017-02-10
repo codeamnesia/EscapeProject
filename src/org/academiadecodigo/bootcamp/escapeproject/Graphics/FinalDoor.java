@@ -22,6 +22,13 @@ public class FinalDoor implements MouseHandler {
     private Picture smallMobille;
     private Picture bigMobille;
 
+
+    private int clickCounter;
+    
+private static final int MAX_NUMBER_OF_CLICKS = 5;
+
+
+    public FinalDoor() throws InterruptedException {
     //Text box for mobile screen
     private Text mobileText1;
     private Text mobileText2;
@@ -81,7 +88,6 @@ public class FinalDoor implements MouseHandler {
         checked2 = false;
         checked3 = false;
 
-
         this.init();
 
     }
@@ -98,6 +104,7 @@ public class FinalDoor implements MouseHandler {
         background = new Picture(60.0, 60.0, "resources/pics/finalback.png");
         background.draw();
 
+
         fdoor1 = new Picture(430, 235, "resources/pics/fd1.png");
         fdoor2 = new Picture(430, 235, "resources/pics/fd2.png");
         fdoor3 = new Picture(430, 235, "resources/pics/fd3.png");
@@ -106,14 +113,28 @@ public class FinalDoor implements MouseHandler {
         fdoor6 = new Picture(430, 235, "resources/pics/fd6.png");
         fdoor7 = new Picture(430, 235, "resources/pics/fd7.png");
 
+
         this.start();
 
     }
+    public void start() {
 
     public void start() throws InterruptedException {
 
+
         smallMobille = new Picture(586.0, 503.0, "resources/pics/mbsmall.png");
         smallMobille.draw();
+
+
+        bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
+        bigMobille.draw();
+
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e){
+        System.out.println(e);
 
 
         bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
@@ -150,7 +171,7 @@ public class FinalDoor implements MouseHandler {
         checkT3.draw();
         checkF3 = new Text(400, 270, "false");
         */
-//        this.openDoor();
+       // this.openDoor();
 
     }
 
@@ -207,7 +228,7 @@ public class FinalDoor implements MouseHandler {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+//TODO: CHANGE THE METHOD FOR CHEKING THE TEXT ONLY IN LAST LINE
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8) {
             write0ln1();
@@ -215,64 +236,63 @@ public class FinalDoor implements MouseHandler {
             write1ln1();
 
         }
-        checkF1.delete();
-        if (mobileStr1.length() == 8 && !checked1){
-            if (!mobileStr1.equals(mobileStr1T)) {
-                mobileStr1 = "";
-
-                //removed checkF1 to somewhere I don't remember
-
-                checkF1.draw();
-
-//                checkF1.delete();
-
-                return;
-            }
-
-            //removed checkT1 to constructor;
-
-            checkT1.draw();
-            checked1 = true;
-            return;
-        }
+//        checkF1.delete();
+//        if (mobileStr1.length() == 8 && !checked1 &&  ){
+//            if (!mobileStr1.equals(mobileStr1T)) {
+//                mobileStr1 = "";
+//
+//                //removed checkF1 to somewhere I don't remember
+//
+//                checkF1.draw();
+////                checkF1.delete();
+//
+//                return;
+//            }
+//
+//            //removed checkT1 to constructor;
+//
+//            checkT1.draw();
+//            checked1 = true;
+//            return;
+//        }
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
             write0ln2();
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
             write1ln2();
         }
-        checkF2.delete();
-            if (mobileStr2.length() == 8 && !checked2) {
-              if (!mobileStr2.equals(mobileStr2T)) {
-                    mobileStr2 = "";
-                    //removed checkF2 to constructor
-                    checkF2.draw();
-                    return;
-                }
-               //removed checkT2 to constructor;
-                checkT2.draw();
-                checked2 = true;
-                return;
-            }
+//        checkF2.delete();
+//            if (mobileStr2.length() == 8 && !checked2) {
+//              if (!mobileStr2.equals(mobileStr2T)) {
+//                    mobileStr2 = "";
+//                    //removed checkF2 to constructor
+//                    checkF2.draw();
+//                    return;
+//                }
+//               //removed checkT2 to constructor;
+//                checkT2.draw();
+//                checked2 = true;
+//                return;
+//            }
 
          if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
             write0ln3();
         }else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
             write1ln3();
         }
-        checkF3.delete();
-        if (mobileStr3.length() == 8 && !checked3) {
-            if (!mobileStr3.equals(mobileStr3T)) {
-                mobileStr3 = "";
-                //removed checkf3 to constructor;
-                checkF3.draw();
-                return;
-            }
-           //removed checkt3 to constructor;
-            checkT3.draw();
-            checked3 = true;
-            return;
-        }
+//        checkF3.delete();
+//        if (mobileStr3.length() == 8 && !checked3) {
+//            if (!mobileStr3.equals(mobileStr3T)) {
+//                mobileStr3 = "";
+//                //removed checkf3 to constructor;
+//                checkF3.draw();
+//                return;
+//            }
+//           //removed checkt3 to constructor;
+//            checkT3.draw();
+//            checked3 = true;
+//            return;
+//        }
         System.out.println(e);
     }
 
@@ -311,12 +331,21 @@ public class FinalDoor implements MouseHandler {
         mobileStr3 += "0";
         mobileText3.setText(mobileStr3);
         mobileText3.draw();
+
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
+
+        System.out.println(e);
+
+    }
+
+}
+
         //System.out.println(e);
 
     }
 
 }
+

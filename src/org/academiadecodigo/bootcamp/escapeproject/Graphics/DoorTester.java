@@ -11,6 +11,8 @@ public class DoorTester {
 
         FinalDoor finalDoor = new FinalDoor();
 
+        //FinalDoor finalDoor = new FinalDoor();
+
     }
 
 }
