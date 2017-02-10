@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -25,6 +26,11 @@ public class DoorsUtil {
     }
 
     public static boolean isWithin(MouseEvent e, Picture p) {
+        return e.getX() >= p.getX() && e.getX() <= p.getX() + p.getWidth() && e.getY() - 23 >= p.getY()
+                && e.getY() - 23 <= p.getY() + p.getHeight();
+    }
+
+    public static boolean isWithin(MouseEvent e, Rectangle p) {
         return e.getX() >= p.getX() && e.getX() <= p.getX() + p.getWidth() && e.getY() - 23 >= p.getY()
                 && e.getY() - 23 <= p.getY() + p.getHeight();
     }

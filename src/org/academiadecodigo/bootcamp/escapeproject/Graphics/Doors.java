@@ -9,6 +9,8 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.awt.*;
+
 /**
  * Created by codecadet on 08/02/17.
  */
@@ -26,6 +28,7 @@ public class Doors implements MouseHandler{
     private Picture door5;
     private Picture door6;
     private Picture door7;
+
 
     private int theOnePayingAttention;
     private boolean[] isPayingAttention = {false, false, false};
@@ -50,6 +53,7 @@ public class Doors implements MouseHandler{
         scene.setColor(Color.BLACK);
         scene.draw();
 
+        //Creates Background picture for questions levels
         background = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
         background.draw();
 
@@ -69,6 +73,8 @@ public class Doors implements MouseHandler{
         picsPadawan[2][1] = new Picture(600.0, 225.0, "resources/pics/r3.png");
         picsPadawan[2][2] = new Picture(600.0, 225.0, "resources/pics/r4.png");
         picsPadawan[2][3] = new Picture(600.0, 225.0, "resources/pics/Rpointer.png");
+
+        //Instance level doors
 
         door1 = new Picture(315.0, 125.0, "resources/pics/d1.png");
         door2 = new Picture(315.0, 125.0, "resources/pics/d2.png");
@@ -110,7 +116,10 @@ public class Doors implements MouseHandler{
 
     }
 
+
     private void openDoor() throws InterruptedException {
+
+        makePadawansDisapear();
 
         while(true) {
 
@@ -150,6 +159,21 @@ public class Doors implements MouseHandler{
             Thread.sleep(1000);
 
         }
+
+    }
+
+    private void makePadawansDisapear() throws InterruptedException{
+
+        for (int k = 0; k < 10; k++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 4; j++) {
+                    picsPadawan[i][j].grow(-5.0, -10.0);
+                    Thread.sleep(15);
+                }
+            }
+        }
+        deletePadPictures();
+        Thread.sleep(30);
 
     }
 
