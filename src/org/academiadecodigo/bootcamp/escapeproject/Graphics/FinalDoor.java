@@ -55,13 +55,34 @@ public class FinalDoor implements MouseHandler {
     private Picture fdoor6;
     private Picture fdoor7;
 
+    //boolean for checked string
+    private boolean checked1;
+    private boolean checked2;
+    private boolean checked3;
 
+
+    int counter;
+
+    /* TODO DO WE REALLY NEED THIS SHIT?!?!?!?!??!
     private int clickCounter;
-
-    private static final int MAX_NUMBER_OF_CLICKS = 5;
-
+   private static final int MAX_NUMBER_OF_CLICKS = 5;
+*/
 
     public FinalDoor() throws InterruptedException {
+        checkF1 = new Text(400, 230, "false");
+        checkT1 = new Text(400, 230, "true");
+        checkF2 = new Text(400, 250, "false");
+        checkT2 = new Text(400, 250, "true");
+        checkF3 = new Text(400, 270, "false");
+        checkT3 = new Text(400, 270, "true");
+
+
+        checked1 = false;
+        checked2 = false;
+        checked3 = false;
+
+        counter = 0;
+
 
         this.init();
 
@@ -125,12 +146,13 @@ public class FinalDoor implements MouseHandler {
         mobileText2.draw();
         mobileText3.draw();
 
-        //Third Line code check
+        /*Third Line code check
+        TODO EXPLAIN ME THIS F***** SHIT. THIS IS NOT HERE FOREVER TRUE IN THE END
         checkT3 = new Text(400, 270, "true");
         checkT3.draw();
         checkF3 = new Text(400, 270, "false");
-
-        //this.openDoor();
+        */
+        this.openDoor();
 
     }
 
@@ -184,68 +206,75 @@ public class FinalDoor implements MouseHandler {
     }
 
 
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        //TODO checkar saidas da 2 line false e outros....
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8) {
             write0ln1();
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() < 8) {
             write1ln1();
-        }
 
-        if (mobileStr1.length() == 8) {
-            System.out.println("actually not here");
+        }
+        checkF1.delete();
+        if (mobileStr1.length() == 8 && !checked1){
             if (!mobileStr1.equals(mobileStr1T)) {
                 mobileStr1 = "";
-                checkF1 = new Text(400, 230, "false");
+
+                //removed checkF1 to somewhere I don't remember
+
                 checkF1.draw();
+
+//                checkF1.delete();
+
                 return;
             }
-            checkF1.delete();
-            checkT1 = new Text(400, 230, "true");
-            checkT1.draw();
-        }
 
+            //removed checkT1 to constructor;
+
+            checkT1.draw();
+            checked1 = true;
+            return;
+        }
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
             write0ln2();
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8) {
             write1ln2();
-
-            if (mobileStr2.length() == 8) {
-                if (!mobileStr2.equals(mobileStr2T)) {
+        }
+        checkF2.delete();
+            if (mobileStr2.length() == 8 && !checked2) {
+              if (!mobileStr2.equals(mobileStr2T)) {
                     mobileStr2 = "";
-                    checkF2 = new Text(400, 250, "false");
+                    //removed checkF2 to constructor
                     checkF2.draw();
                     return;
                 }
-                checkF2.delete();
-                checkT2 = new Text(400, 250, "true");
+               //removed checkT2 to constructor;
                 checkT2.draw();
+                checked2 = true;
+                return;
             }
 
-        } else if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
+         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
             write0ln3();
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
+        }else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8) {
             write1ln3();
         }
-
-        if (mobileStr3.length() == 8) {
+        checkF3.delete();
+        if (mobileStr3.length() == 8 && !checked3) {
             if (!mobileStr3.equals(mobileStr3T)) {
                 mobileStr3 = "";
-                checkF3 = new Text(400, 260, "false");
+                //removed checkf3 to constructor;
                 checkF3.draw();
                 return;
             }
-            checkF3.delete();
-            checkT3 = new Text(400, 260, "true");
+           //removed checkt3 to constructor;
             checkT3.draw();
-            checkT3.delete();
+            checked3 = true;
+            return;
         }
-
-
         System.out.println(e);
     }
 
