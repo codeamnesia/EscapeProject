@@ -20,7 +20,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Sprite implements KeyboardHandler {
 
     private Rectangle spriteCollisionDetector;                //the hitbox (going to be half the height of image)
-    private Picture spriteImage;                              //any image to represent our character
+private Picture [] spriteImage = new Picture[4];              //group of images to represent our character: DOWN, UP, LEFT, RIGHT
+
+    private Picture currentSprite;                            // the current image of the sprite
 
     private int x = spriteCollisionDetector.getX();             //left-top collision corner
     private int y = spriteCollisionDetector.getY();             //left-bottom collision corner
@@ -28,27 +30,40 @@ public class Sprite implements KeyboardHandler {
     private int h = spriteCollisionDetector.getHeight() + y;    //right-bottom collision corner
 
     private int mov = 10;                                     //the amount of pixels walked per move. 10 by default
+    private int steps;                                        //number of moves made so far. it's reset when a door is found
     private Shape[] walls;                                   //group of walls
     private Shape[] doors;                                   //scenePrompts
 
-    public boolean isDoor;                                    //is door open, to prompt new screen
+
+    private boolean sceneOff;                                  //When true, the sprite can move around.
+
+
+    public boolean isSceneOff() {
+        return sceneOff;
+    }
+
+    public void setSceneOff(boolean sceneOff) {
+        this.sceneOff = sceneOff;
+    }
+
 
 
     //Constructor. You can define the picture and the speed of the sprite.
-    public Sprite(Picture pic, int movSpeed) {
+    public Sprite(Picture [] pics, int movSpeed) {
         mov = movSpeed;
-        spriteImage = pic;
-        spriteCollisionDetector = new Rectangle(pic.getX(), pic.getY(), pic.getWidth(), pic.getHeight() / 2);
+        spriteImage = pics;
+        currentSprite = pics[0];
+        spriteCollisionDetector = new Rectangle(currentSprite.getX(), currentSprite.getY(), currentSprite.getWidth(), currentSprite.getHeight() / 2);
     }
 
 
     private Keyboard keyboard;
 
     public void move(Keyboard keyboard) {
-        this.keyboard = new Keyboard;
+        this.keyboard = new Keyboard(this);
 
 
-        Keyboard k = new Keyboard(this);
+        Keyboard k = new Keyboard(this);               //TODO carregar no espaço para interagir com objecto (portas, papel higienico)
         KeyboardEvent event = new KeyboardEvent();
         KeyboardEvent eventU = new KeyboardEvent();
         KeyboardEvent eventD = new KeyboardEvent();
@@ -80,60 +95,79 @@ public class Sprite implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent e) {
+        if(sceneOff) {
 
-
-        switch (e.getKey()) {
-            case KeyboardEvent.KEY_UP:
-
-                if ((!CollisionDetector.intersects(walls, x, y - mov)) && (!CollisionDetector.intersects(walls, w, h - mov)) &&
-                        (!CollisionDetector.intersects(walls, x, h - mov)) && (!CollisionDetector.intersects(walls, w, y - mov))) {
-                    spriteCollisionDetector.translate(0, -mov);
-                    spriteImage.translate(0, -mov);
-                } else {
-                    break;
+            if ((CollisionDetector.intersects(doors, x, y)) && (CollisionDetector.intersects(doors, w, h)) &&
+                (CollisionDetector.intersects(doors, x, h)) && (CollisionDetector.intersects(doors, w, y))) {
+                if (steps >= 3) {
+                    sceneOff = false;
+                    steps = 0;
                 }
+            }
+
+            switch (e.getKey()) {
+                case KeyboardEvent.KEY_UP:
+
+                    currentSprite = spriteImage[1];
+
+                    if ((!CollisionDetector.intersects(walls, x, y - mov)) && (!CollisionDetector.intersects(walls, w, h - mov)) &&
+                            (!CollisionDetector.intersects(walls, x, h - mov)) && (!CollisionDetector.intersects(walls, w, y - mov))) {
+                        spriteCollisionDetector.translate(0, -mov);
+                        currentSprite.translate(0, -mov);
+                        steps++;
+                    } else {
+                        break;
+                    }
 
 
-                break;
-
-
-            case KeyboardEvent.KEY_DOWN:
-
-
-                if ((!CollisionDetector.intersects(walls, x, y + mov)) && (!CollisionDetector.intersects(walls, w, h + mov)) &&
-                        (!CollisionDetector.intersects(walls, x, h + mov)) && (!CollisionDetector.intersects(walls, w, y + mov))) {
-                    spriteCollisionDetector.translate(0, mov);
-                    spriteImage.translate(0, mov);
-                } else {
                     break;
-                }
-                break;
 
 
-            case KeyboardEvent.KEY_LEFT:
+                case KeyboardEvent.KEY_DOWN:
 
-                if ((!CollisionDetector.intersects(walls, x - mov, y)) && (!CollisionDetector.intersects(walls, w - mov, h)) &&
-                        (!CollisionDetector.intersects(walls, x - mov, h)) && (!CollisionDetector.intersects(walls, w - mov, y))) {
-                    spriteCollisionDetector.translate(-mov, 0);
-                    spriteImage.translate(-mov, 0);
-                } else {
+                    currentSprite = spriteImage[0];
+
+                    if ((!CollisionDetector.intersects(walls, x, y + mov)) && (!CollisionDetector.intersects(walls, w, h + mov)) &&
+                            (!CollisionDetector.intersects(walls, x, h + mov)) && (!CollisionDetector.intersects(walls, w, y + mov))) {
+                        spriteCollisionDetector.translate(0, mov);
+                        currentSprite.translate(0, mov);
+                        steps++;
+                    } else {
+                        break;
+                    }
                     break;
-                }
-                break;
 
 
-            case KeyboardEvent.KEY_RIGHT:
+                case KeyboardEvent.KEY_LEFT:
 
-                if ((!CollisionDetector.intersects(walls, x + mov, y)) && (!CollisionDetector.intersects(walls, w + mov, h)) &&
-                        (!CollisionDetector.intersects(walls, x + mov, h)) && (!CollisionDetector.intersects(walls, w + mov, y))) {
-                    spriteCollisionDetector.translate(mov, 0);
-                    spriteImage.translate(mov, 0);
-                } else {
+                    currentSprite = spriteImage[3];
+
+                    if ((!CollisionDetector.intersects(walls, x - mov, y)) && (!CollisionDetector.intersects(walls, w - mov, h)) &&
+                            (!CollisionDetector.intersects(walls, x - mov, h)) && (!CollisionDetector.intersects(walls, w - mov, y))) {
+                        spriteCollisionDetector.translate(-mov, 0);
+                        currentSprite.translate(-mov, 0);
+                        steps++;
+                    } else {
+                        break;
+                    }
                     break;
-                }
-                break;
+
+
+                case KeyboardEvent.KEY_RIGHT:
+
+                    currentSprite = spriteImage[2];
+
+                    if ((!CollisionDetector.intersects(walls, x + mov, y)) && (!CollisionDetector.intersects(walls, w + mov, h)) &&
+                            (!CollisionDetector.intersects(walls, x + mov, h)) && (!CollisionDetector.intersects(walls, w + mov, y))) {
+                        spriteCollisionDetector.translate(mov, 0);
+                        currentSprite.translate(mov, 0);
+                        steps++;
+                    } else {
+                        break;
+                    }
+                    break;
+            }
         }
-
 
     }
 
@@ -145,4 +179,4 @@ public class Sprite implements KeyboardHandler {
 
 
 }
-}
+
