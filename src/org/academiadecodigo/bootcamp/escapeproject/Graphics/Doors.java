@@ -9,17 +9,17 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.awt.*;
-
 /**
  * Created by codecadet on 08/02/17.
  */
-public class Doors implements MouseHandler{
+public class Doors {
 
 
-    private Rectangle scene;
+
     private Picture background;
     private Picture[][] picsPadawan;
+
+    private Questions questions;
 
     private Picture door1;
     private Picture door2;
@@ -32,10 +32,9 @@ public class Doors implements MouseHandler{
 
     private int theOnePayingAttention;
     private boolean[] isPayingAttention = {false, false, false};
-    private boolean caughtAttention;
-    private int clickCounter;
 
-    private static final int MAX_NUMBER_OF_CLICKS = 5;
+
+    public static final int MAX_NUMBER_OF_CLICKS = 5;
 
 
     public Doors() throws InterruptedException{
@@ -46,12 +45,7 @@ public class Doors implements MouseHandler{
 
     private void init() throws InterruptedException{
 
-        Mouse m = new Mouse(this);
-        m.addEventListener(MouseEventType.MOUSE_CLICKED);
-        m.addEventListener(MouseEventType.MOUSE_MOVED);
-        scene = new Rectangle(10.0, 10.0, 900, 900.0);
-        scene.setColor(Color.BLACK);
-        scene.draw();
+        questions = new Questions();
 
         //Creates Background picture for questions levels
         background = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
@@ -85,83 +79,57 @@ public class Doors implements MouseHandler{
         door7 = new Picture(315.0, 125.0, "resources/pics/d7.png");
 
 
-        this.start();
+        //this.start();
 
     }
 
-    private void start() throws InterruptedException{
 
-        clickCounter = 0;
-        caughtAttention = false;
 
-        while(true) {
 
-            this.deletePadPictures();
-
-            this.randomizeCharacters();
-
-            Thread.sleep(DoorsUtil.randomTime());
-
-            if (caughtAttention) {
-                this.openDoor();
-                break;
-            }
-
-            if (clickCounter >= MAX_NUMBER_OF_CLICKS) {
-                this.looseChance();
-                break;
-            }
-
-        }
-
-    }
-
-    private void openDoor() throws InterruptedException {
+    public void openDoor() throws InterruptedException {
 
         makePadawansDisapear();
 
-        while(true) {
+        door7.draw();
+        door1.delete();
 
-            door7.draw();
-            door1.delete();
+        Thread.sleep(200);
 
-            Thread.sleep(200);
+        door6.draw();
+        door7.delete();
 
-            door6.draw();
-            door7.delete();
+        Thread.sleep(200);
 
-            Thread.sleep(200);
+        door5.draw();
+        door6.delete();
 
-            door5.draw();
-            door6.delete();
+        Thread.sleep(200);
 
-            Thread.sleep(200);
+        door4.draw();
+        door5.delete();
 
-            door4.draw();
-            door5.delete();
+        Thread.sleep(200);
 
-            Thread.sleep(200);
+        door3.draw();
+        door4.delete();
 
-            door3.draw();
-            door4.delete();
+        Thread.sleep(200);
 
-            Thread.sleep(200);
+        door2.draw();
+        door3.delete();
 
-            door2.draw();
-            door3.delete();
+        Thread.sleep(200);
 
-            Thread.sleep(200);
+        door1.draw();
+        door2.delete();
 
-            door1.draw();
-            door2.delete();
+        Thread.sleep(1000);
 
-            Thread.sleep(1000);
 
-        }
 
     }
 
-    private void makePadawansDisapear() throws InterruptedException{
+    public void makePadawansDisapear() throws InterruptedException{
 
         for (int k = 0; k < 10; k++) {
             for (int i = 0; i < 3; i++) {
@@ -176,14 +144,14 @@ public class Doors implements MouseHandler{
 
     }
 
-    private void looseChance() {
+    public void looseChance() {
         Text text = new Text(300, 200, "You lost your chance!!!");
         text.grow(200.0, 20.0);
         text.setColor(Color.MAGENTA);
         text.draw();
     }
 
-    private void deletePadPictures() {
+    public void deletePadPictures() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
                 picsPadawan[i][j].delete();
@@ -192,7 +160,7 @@ public class Doors implements MouseHandler{
 
     }
 
-    private boolean randomizeCharacters() {
+    public boolean randomizeCharacters() {
 
         theOnePayingAttention = -1;
         for (boolean b : isPayingAttention) {
@@ -214,24 +182,16 @@ public class Doors implements MouseHandler{
         return false;
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e){
-
-        if (theOnePayingAttention != -1 && DoorsUtil.isWithin(e, picsPadawan[theOnePayingAttention][3]) && isPayingAttention[theOnePayingAttention]) {
-            if (!caughtAttention) {
-                picsPadawan[theOnePayingAttention][3].grow(20.0, 50.0);
-            }
-            caughtAttention = true;
-
-        }
-        clickCounter++;
-        System.out.println(e);
+    public int getTheOnePayingAttention() {
+        return theOnePayingAttention;
     }
 
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        System.out.println(e);
-
+    public Picture[][] getPicsPadawan() {
+        return picsPadawan;
     }
+
+    public boolean[] getIsPayingAttention() {
+        return isPayingAttention;
+    }
+
 }

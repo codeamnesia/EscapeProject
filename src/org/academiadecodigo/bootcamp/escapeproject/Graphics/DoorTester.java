@@ -7,17 +7,9 @@ public class DoorTester {
 
     public static void main(String[] args) throws InterruptedException{
 
-        //Doors doors = new Doors();
-//
-//        FinalDoor finalDoor = new FinalDoor();
-//       finalDoor.prompt();
+        DoorsGameLoop doorsGameLoop = new DoorsGameLoop();
 
-        FinalDoor finalDoor = new FinalDoor();
-
-        //Inicial inicial = new Inicial();
-
-        finalDoor.prompt();
-
+        doorsGameLoop.start();
 
 
 
