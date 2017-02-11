@@ -88,8 +88,12 @@ public class Doors {
 
     public void openDoor() throws InterruptedException {
 
+<<<<<<< HEAD
         makePadawansDisapear();
 
+=======
+    private void openDoor() throws InterruptedException {
+>>>>>>> master
 
 
         door7.draw();
