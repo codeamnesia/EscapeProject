@@ -12,11 +12,11 @@ public class DoorTester {
 //        FinalDoor finalDoor = new FinalDoor();
 //       finalDoor.prompt();
 
-        //FinalDoor finalDoor = new FinalDoor();
+        FinalDoor finalDoor = new FinalDoor();
 
-        Inicial inicial = new Inicial();
+        //Inicial inicial = new Inicial();
 
-        inicial.prompt();
+        finalDoor.prompt();
 
 
 

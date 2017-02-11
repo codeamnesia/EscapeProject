@@ -59,6 +59,8 @@ public class FinalDoor implements MouseHandler, Scenable {
     private Picture fdoor6;
     private Picture fdoor7;
 
+    private Picture[] fdoors;
+
     //boolean for checked string
     private boolean checked1;
     private boolean checked2;
@@ -152,25 +154,12 @@ public class FinalDoor implements MouseHandler, Scenable {
         bigMobille.grow(-80,-200);
         bigMobille.draw();
 
-        Thread.sleep(100);
+        for (int i = 0; i < 4; i++) {
+            Thread.sleep(100);
 
-        bigMobille.grow(20,50);
-        bigMobille.draw();
-
-        Thread.sleep(100);
-
-        bigMobille.grow(20,50);
-        bigMobille.draw();
-
-        Thread.sleep(100);
-
-        bigMobille.grow(20,50);
-        bigMobille.draw();
-
-        Thread.sleep(100);
-
-        bigMobille.grow(20,50);
-        bigMobille.draw();
+            bigMobille.grow(20,50);
+            bigMobille.draw();
+        }
 
         mobileActive = true;
         mobileText1.draw();
@@ -188,9 +177,9 @@ public class FinalDoor implements MouseHandler, Scenable {
         }
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8 && mobileActive) {
-            write0ln1();
+            writeln1(0);
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() < 8 && mobileActive) {
-            write1ln1();
+            writeln1(1);
 
         }
         checkF1.delete();
@@ -207,9 +196,9 @@ public class FinalDoor implements MouseHandler, Scenable {
         }
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 && mobileActive) {
-            write0ln2();
+            writeln2(0);
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 && mobileActive) {
-            write1ln2();
+            writeln2(1);
         }
         checkF2.delete();
         if (mobileStr2.length() == 8 && !checked2) {
@@ -225,9 +214,9 @@ public class FinalDoor implements MouseHandler, Scenable {
         }
 
         if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8 && mobileActive) {
-            write0ln3();
+            writeln3(0);
         } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8 && mobileActive) {
-            write1ln3();
+            writeln3(1);
         }
         checkF3.delete();
         if (mobileStr3.length() == 8 && !checked3) {
@@ -265,6 +254,16 @@ public class FinalDoor implements MouseHandler, Scenable {
         fdoor5 = new Picture(430, 230, "resources/pics/fd5.png");
         fdoor6 = new Picture(430, 230, "resources/pics/fd6.png");
         fdoor7 = new Picture(430, 230, "resources/pics/fd7.png");
+
+        fdoors = new Picture[7];
+
+        fdoors[0] = new Picture(430, 235, "resources/pics/fd1.png");
+        fdoors[1] = new Picture(430, 235, "resources/pics/fd2.png");
+        fdoors[2] = new Picture(430, 236, "resources/pics/fd3.png");
+        fdoors[3] = new Picture(430, 228, "resources/pics/fd4.png");
+        fdoors[4] = new Picture(430, 230, "resources/pics/fd5.png");
+        fdoors[5] = new Picture(430, 230, "resources/pics/fd6.png");
+        fdoors[6] = new Picture(430, 230, "resources/pics/fd7.png");
 
 
         bigMobille.delete();
@@ -325,46 +324,25 @@ public class FinalDoor implements MouseHandler, Scenable {
 
     //Writes on Mobile screen 1 line 1
 
-    private void write1ln1() {
-        mobileStr1 += "1";
-        mobileText1.setText(mobileStr1);
-        mobileText1.draw();
-    }
-
-    //Writes on Mobile screen 0 line 1
-    private void write0ln1() {
-        mobileStr1 += "0";
+    private void writeln1(int binary) {
+        mobileStr1 += binary;
         mobileText1.setText(mobileStr1);
         mobileText1.draw();
     }
 
     //Writes on Mobile screen 1 line 2
-    private void write1ln2() {
-        mobileStr2 += "1";
+    private void writeln2(int binary) {
+        mobileStr2 += binary;
         mobileText2.setText(mobileStr2);
         mobileText2.draw();
     }
 
-    //Writes on Mobile screen 0 line 2
-    private void write0ln2() {
-        mobileStr2 += "0";
-        mobileText2.setText(mobileStr2);
-        mobileText2.draw();
-    }
 
     //Writes on Mobile screen 1 line 3
-    private void write1ln3() {
-        mobileStr3 += "1";
+    private void writeln3(int binary) {
+        mobileStr3 += binary;
         mobileText3.setText(mobileStr3);
         mobileText3.draw();
-    }
-
-    //Writes on Mobile screen 0 line 3
-    private void write0ln3() {
-        mobileStr3 += "0";
-        mobileText3.setText(mobileStr3);
-        mobileText3.draw();
-
     }
 
     @Override

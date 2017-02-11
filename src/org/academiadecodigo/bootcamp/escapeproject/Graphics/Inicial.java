@@ -29,6 +29,8 @@ public class Inicial implements MouseHandler, Scenable {
 
     private Rectangle start;
     private boolean isStartPressed;
+    private Rectangle sleepRect;
+    private boolean isSleepRectPressed;
 
 
     @Override
@@ -49,16 +51,28 @@ public class Inicial implements MouseHandler, Scenable {
         inicial9 = new Picture(10, 10, "resources/pics/1.jpg");
         first = new Picture(10, 10, "resources/pics/first.jpg");
         start = new Rectangle(670, 205, 100, 100);
+        sleepRect = new Rectangle (670, 500, 100, 100);
 
         first.draw();
         start.setColor(Color.YELLOW);
         start.draw();
 
-        while (!isStartPressed) {
+        sleepRect.setColor(Color.YELLOW);
+        sleepRect.draw();
+
+        while (true) {
             Thread.sleep(20);
+
+            if (isStartPressed) {
+                this.start();
+            }
+            if (isSleepRectPressed) {
+            }
+
         }
-        this.start();
+
     }
+
 
     private void start() throws InterruptedException {
 
@@ -123,6 +137,10 @@ public class Inicial implements MouseHandler, Scenable {
         if (DoorsUtil.isWithin(e, start)) {
             System.out.println(e);
             isStartPressed = true;
+        }
+
+        if (DoorsUtil.isWithin(e, sleepRect)) {
+           isSleepRectPressed = true;
         }
 
     }
