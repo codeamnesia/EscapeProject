@@ -1,7 +1,5 @@
 package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
-import org.academiadecodigo.bootcamp.escapeproject.Inicial;
-
 /**
  * Created by codecadet on 08/02/17.
  */
@@ -12,7 +10,7 @@ public class DoorTester {
         //Doors doors = new Doors();
 //
 //        FinalDoor finalDoor = new FinalDoor();
-//        finalDoor.prompt();
+//       finalDoor.prompt();
 
         //FinalDoor finalDoor = new FinalDoor();
 

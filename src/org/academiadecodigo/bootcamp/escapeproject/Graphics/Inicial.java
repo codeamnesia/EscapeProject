@@ -1,12 +1,20 @@
-package org.academiadecodigo.bootcamp.escapeproject;
+package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
 import org.academiadecodigo.bootcamp.escapeproject.Scenable;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.mouse.Mouse;
+import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
+import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
+import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 
 /**
  * Created by codecadet on 11/02/17.
  */
-public class Inicial implements Scenable {
+public class Inicial implements MouseHandler, Scenable {
 
     private Picture inicial1;
     private Picture inicial2;
@@ -17,10 +25,18 @@ public class Inicial implements Scenable {
     private Picture inicial7;
     private Picture inicial8;
     private Picture inicial9;
+    private Picture first;
+
+    private Rectangle start;
+    private boolean isStartPressed;
 
 
     @Override
     public void prompt() throws InterruptedException {
+
+        Mouse m = new Mouse(this);
+        m.addEventListener(MouseEventType.MOUSE_CLICKED);
+        m.addEventListener(MouseEventType.MOUSE_MOVED);
 
         inicial1 = new Picture(10, 10, "resources/pics/9.jpg");
         inicial2 = new Picture(10, 10, "resources/pics/8.jpg");
@@ -31,12 +47,20 @@ public class Inicial implements Scenable {
         inicial7 = new Picture(10, 10, "resources/pics/3.jpg");
         inicial8 = new Picture(10, 10, "resources/pics/2.jpg");
         inicial9 = new Picture(10, 10, "resources/pics/1.jpg");
+        first = new Picture(10, 10, "resources/pics/first.jpg");
+        start = new Rectangle(670, 205, 100, 100);
 
-        this.init();
+        first.draw();
+        start.setColor(Color.YELLOW);
+        start.draw();
 
+        while (!isStartPressed) {
+            Thread.sleep(20);
+        }
+        this.start();
     }
 
-    private void init() throws InterruptedException{
+    private void start() throws InterruptedException {
 
         inicial1.draw();
 
@@ -88,6 +112,26 @@ public class Inicial implements Scenable {
         inicial8.delete();
         inicial9.draw();
 
+        Thread.sleep(800);
+
 
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+        if (DoorsUtil.isWithin(e, start)) {
+            System.out.println(e);
+            isStartPressed = true;
+        }
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        System.out.println(e);
+
+    }
+
+
 }
