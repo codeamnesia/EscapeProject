@@ -32,6 +32,8 @@ public class Inicial implements MouseHandler, Scenable {
     private Rectangle sleepRect;
     private boolean isSleepRectPressed;
 
+    private DoorsGameLoop doorsGameLoop;
+
 
     @Override
     public void prompt() throws InterruptedException {
@@ -60,6 +62,24 @@ public class Inicial implements MouseHandler, Scenable {
         sleepRect.setColor(Color.YELLOW);
         sleepRect.draw();
 
+        enterCycle();
+
+        /*while (true) {
+            Thread.sleep(20);
+
+            if (isStartPressed) {
+                this.start();
+            }
+            if (isSleepRectPressed) {
+                this.initDoorLoopTester();
+                break;
+            }
+
+        }*/
+
+    }
+
+    private void enterCycle() throws InterruptedException {
         while (true) {
             Thread.sleep(20);
 
@@ -67,10 +87,19 @@ public class Inicial implements MouseHandler, Scenable {
                 this.start();
             }
             if (isSleepRectPressed) {
+                this.initDoorLoopTester();
+                break;
             }
 
         }
+        return;
+    }
 
+    private void initDoorLoopTester() throws InterruptedException {
+        doorsGameLoop = new DoorsGameLoop();
+        doorsGameLoop.start();
+        isSleepRectPressed = false;
+        enterCycle();
     }
 
 

@@ -125,6 +125,8 @@ public class Doors {
 
         Thread.sleep(1000);
 
+        return;
+
 
 
     }
@@ -182,6 +184,10 @@ public class Doors {
         return false;
     }
 
+    public void deleteDoors(){
+        door1.delete();
+    }
+
     public int getTheOnePayingAttention() {
         return theOnePayingAttention;
     }
@@ -194,4 +200,7 @@ public class Doors {
         return isPayingAttention;
     }
 
+    public Picture getBackground() {
+        return background;
+    }
 }

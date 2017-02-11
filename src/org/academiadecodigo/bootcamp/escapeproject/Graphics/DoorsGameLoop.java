@@ -54,14 +54,29 @@ public class DoorsGameLoop implements MouseHandler {
 
                 //this.openDoor();
                 break;
+                //TODO sir dos whioles com retun;
             }
 
-            if (clickCounter >= MAX_NUMBER_OF_CLICKS) {
+            /*if (clickCounter >= MAX_NUMBER_OF_CLICKS) {
                 door.looseChance();
                 break;
-            }
+            }*/
 
         }
+
+        Thread.sleep(300);
+        closePrompt();
+        return;
+
+
+    }
+
+    //TODo apagar quadrado quando resposta correcta e acrescentar return nos metodos void!
+
+    public void closePrompt() {
+        door.deleteDoors();
+        door.getBackground().delete();
+        question.deleteEverything();
 
     }
 

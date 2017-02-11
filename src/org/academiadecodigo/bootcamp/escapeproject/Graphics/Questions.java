@@ -68,6 +68,16 @@ public class Questions implements KeyboardHandler{
     private String C;
     private int rightAnswerIndex;
 
+    private Rectangle rect;
+    private Rectangle rect1;
+    private Rectangle rect2;
+    private Rectangle rect3;
+    private Text text;
+    private Text text1;
+    private Text text2;
+    private Text text3;
+
+
     //private Doors door = new Doors();
 
     public Questions() throws InterruptedException {
@@ -77,12 +87,13 @@ public class Questions implements KeyboardHandler{
         test();
 
         while (true){
-            Thread.sleep(3);
+            Thread.sleep(300);
             if (rigthAnswer){
                 doors.openDoor();
                 break;
             }
         }
+        return;
 
 
     }
@@ -175,38 +186,49 @@ public class Questions implements KeyboardHandler{
         event2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event2);
 
-        Rectangle rect = new Rectangle(60, 630, 800, 200);
+        rect = new Rectangle(60, 630, 800, 200);
         rect.setColor(Color.BLACK);
         rect.fill();
 
-        Rectangle rect1 = new Rectangle(70, 703, 780, 20);
+        rect1 = new Rectangle(70, 703, 780, 20);
         rect1.setColor(Color.BLACK);
         rect1.draw();
 
-        Rectangle rect2 = new Rectangle(70, 733, 780, 20);
+        rect2 = new Rectangle(70, 733, 780, 20);
         rect2.setColor(Color.BLACK);
         rect2.draw();
 
-        Rectangle rect3 = new Rectangle(70, 763, 780, 20);
+        rect3 = new Rectangle(70, 763, 780, 20);
         rect3.setColor(Color.BLACK);
         rect3.draw();
 
-        Text text = new Text(70, 665, Q);
+        text = new Text(70, 665, Q);
         text.setColor(Color.WHITE);
         text.draw();
 
-        Text text1 = new Text(80, 705, "A - " + A);
+        text1 = new Text(80, 705, "A - " + A);
         text1.setColor(Color.WHITE);
         text1.draw();
 
-        Text text2 = new Text(80, 735, "B - " + B);
+        text2 = new Text(80, 735, "B - " + B);
         text2.setColor(Color.WHITE);
         text2.draw();
 
-        Text text3 = new Text(80, 765, "C - " + C);
+        text3 = new Text(80, 765, "C - " + C);
         text3.setColor(Color.WHITE);
         text3.draw();
 
+    }
+
+    public void deleteEverything(){
+        rect.delete();
+        rect1.delete();
+        rect2.delete();
+        rect3.delete();
+        text.delete();
+        text1.delete();
+        text2.delete();
+        text3.delete();
     }
 
 
