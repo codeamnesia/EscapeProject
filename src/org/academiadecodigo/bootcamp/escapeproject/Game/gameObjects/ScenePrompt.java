@@ -23,7 +23,7 @@ public class ScenePrompt {
 
     private boolean doorClosed;         //When True, the hitBoxPrompt will trigger the questions prompt and the sprite will be ablt to collide with the roomDor.
 
-
+    private boolean locked;             //When True, the door is locked; When false, hide the rectangles, remove the collisions
 
     public ScenePrompt(Rectangle roomDoor){
         this.roomDoor = roomDoor;

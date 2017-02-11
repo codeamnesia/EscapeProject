@@ -12,10 +12,12 @@ public class Wall {
 
 
     private Rectangle rectangle;
+//    private String name;
 
     public Wall(Rectangle rectangle){
 
         this.rectangle = rectangle;
+//        this.name = rectangle.toString();
 
     }
 

@@ -31,12 +31,22 @@ private Picture [] spriteImage = new Picture[4];              //group of images 
 
     private int mov = 10;                                     //the amount of pixels walked per move. 10 by default
     private int steps;                                        //number of moves made so far. it's reset when a door is found
+
     private Shape[] walls;                                   //group of walls
     private Shape[] doors;                                   //scenePrompts
+    private Shape[] rooms;                                   //group of rooms
+
+    private boolean sceneOff = true;                         //When true, the sprite can move around.
+    private boolean [] inRoom = new boolean [9];             //When true, the room will stop being dark permanently;
 
 
-    private boolean sceneOff;                                  //When true, the sprite can move around.
+    public boolean isInRoom( int roomNumber) {
+        return inRoom[roomNumber];
+    }
 
+    public void setInRoom(int roomNumber, boolean inRoom) {
+        this.inRoom[roomNumber] = inRoom;
+    }
 
     public boolean isSceneOff() {
         return sceneOff;
@@ -63,7 +73,7 @@ private Picture [] spriteImage = new Picture[4];              //group of images 
         this.keyboard = new Keyboard(this);
 
 
-        Keyboard k = new Keyboard(this);               //TODO carregar no espaço para interagir com objecto (portas, papel higienico)
+        Keyboard k = new Keyboard(this);               //TODO carregar no espaço para interagir com objecto (portas, computador sala secreta)
         KeyboardEvent event = new KeyboardEvent();
         KeyboardEvent eventU = new KeyboardEvent();
         KeyboardEvent eventD = new KeyboardEvent();
@@ -105,16 +115,28 @@ private Picture [] spriteImage = new Picture[4];              //group of images 
                 }
             }
 
+
+            for (int i = 0; i < rooms.length; i++) {
+                if ((CollisionDetector.intersects(rooms[i], x, y)) && (CollisionDetector.intersects(rooms[i], w, h)) &&
+                    (CollisionDetector.intersects(rooms[i], x, h)) && (CollisionDetector.intersects(rooms[i], w, y))) {
+
+                    inRoom[i] = true;
+
+                }
+            }
+
+
+
             switch (e.getKey()) {
                 case KeyboardEvent.KEY_UP:
 
                     currentSprite = spriteImage[1];
 
                     if ((!CollisionDetector.intersects(walls, x, y - mov)) && (!CollisionDetector.intersects(walls, w, h - mov)) &&
-                            (!CollisionDetector.intersects(walls, x, h - mov)) && (!CollisionDetector.intersects(walls, w, y - mov))) {
-                        spriteCollisionDetector.translate(0, -mov);
-                        currentSprite.translate(0, -mov);
-                        steps++;
+                        (!CollisionDetector.intersects(walls, x, h - mov)) && (!CollisionDetector.intersects(walls, w, y - mov))) {
+                            spriteCollisionDetector.translate(0, -mov);
+                            currentSprite.translate(0, -mov);
+                            steps++;
                     } else {
                         break;
                     }
@@ -128,10 +150,10 @@ private Picture [] spriteImage = new Picture[4];              //group of images 
                     currentSprite = spriteImage[0];
 
                     if ((!CollisionDetector.intersects(walls, x, y + mov)) && (!CollisionDetector.intersects(walls, w, h + mov)) &&
-                            (!CollisionDetector.intersects(walls, x, h + mov)) && (!CollisionDetector.intersects(walls, w, y + mov))) {
-                        spriteCollisionDetector.translate(0, mov);
-                        currentSprite.translate(0, mov);
-                        steps++;
+                        (!CollisionDetector.intersects(walls, x, h + mov)) && (!CollisionDetector.intersects(walls, w, y + mov))) {
+                            spriteCollisionDetector.translate(0, mov);
+                            currentSprite.translate(0, mov);
+                            steps++;
                     } else {
                         break;
                     }
@@ -143,10 +165,10 @@ private Picture [] spriteImage = new Picture[4];              //group of images 
                     currentSprite = spriteImage[3];
 
                     if ((!CollisionDetector.intersects(walls, x - mov, y)) && (!CollisionDetector.intersects(walls, w - mov, h)) &&
-                            (!CollisionDetector.intersects(walls, x - mov, h)) && (!CollisionDetector.intersects(walls, w - mov, y))) {
-                        spriteCollisionDetector.translate(-mov, 0);
-                        currentSprite.translate(-mov, 0);
-                        steps++;
+                        (!CollisionDetector.intersects(walls, x - mov, h)) && (!CollisionDetector.intersects(walls, w - mov, y))) {
+                            spriteCollisionDetector.translate(-mov, 0);
+                            currentSprite.translate(-mov, 0);
+                            steps++;
                     } else {
                         break;
                     }
@@ -158,10 +180,10 @@ private Picture [] spriteImage = new Picture[4];              //group of images 
                     currentSprite = spriteImage[2];
 
                     if ((!CollisionDetector.intersects(walls, x + mov, y)) && (!CollisionDetector.intersects(walls, w + mov, h)) &&
-                            (!CollisionDetector.intersects(walls, x + mov, h)) && (!CollisionDetector.intersects(walls, w + mov, y))) {
-                        spriteCollisionDetector.translate(mov, 0);
-                        currentSprite.translate(mov, 0);
-                        steps++;
+                        (!CollisionDetector.intersects(walls, x + mov, h)) && (!CollisionDetector.intersects(walls, w + mov, y))) {
+                            spriteCollisionDetector.translate(mov, 0);
+                            currentSprite.translate(mov, 0);
+                            steps++;
                     } else {
                         break;
                     }
