@@ -10,7 +10,7 @@ import org.academiadecodigo.bootcamp.escapeproject.Game.gameObjects.Room;
 public class Grid {
 
 
-    private Room room;
+    private Room [] rooms;      //each Room has an array of Pictures on it. They must be adjusted first with the grow method
     private int width;
     private int height;
     private Sprite sprite;
