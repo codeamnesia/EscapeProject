@@ -67,7 +67,7 @@ public class Questions implements KeyboardHandler{
     private String B;
     private String C;
     private int rightAnswerIndex;
-    
+
     //private Doors door = new Doors();
 
     public Questions() throws InterruptedException {
@@ -219,22 +219,24 @@ public class Questions implements KeyboardHandler{
             case KeyboardEvent.KEY_A:
                 if (A == Q_AND_A[rightAnswerIndex][1]) {
                     rigthAnswer = true;
-                    //door.openDoor();
-
+                } else {
+                    break;
                 }
-                break;
+
 
             case KeyboardEvent.KEY_B:
                 if (B == Q_AND_A[rightAnswerIndex][1]) {
                     rigthAnswer = true;
+                }else {
+                    break;
                 }
-                break;
 
             case KeyboardEvent.KEY_C:
                 if (C == Q_AND_A[rightAnswerIndex][1]) {
                     rigthAnswer = true;
+                }else {
+                    break;
                 }
-                break;
 
         }
     }
