@@ -22,7 +22,7 @@ public class Room {
      * It has a rectangle to orient the position of the picture.
      *
      */
-    //private int roomNumber;             //There are 9 rooms, numbered from 0 to 8;
+    // private int roomNumber;             //There are 9 rooms, numbered from 0 to 8;
     private Sprite sprite;              //the room knows if it has the sprite in it or not
     private Picture[] roomPics;
     private Picture current;

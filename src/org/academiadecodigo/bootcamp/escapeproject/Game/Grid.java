@@ -55,7 +55,7 @@ public class Grid {
 
         rooms = new Room[9];            //9 rooms
         defineRooms();
-        
+
 
     //todo: sprite pictures spritePictures = {the 4 pictures};
         sprite = new Sprite(spritePictures, 10);
