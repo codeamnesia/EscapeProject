@@ -62,6 +62,7 @@ public class Questions implements KeyboardHandler{
     private boolean[] questionsAsked = new boolean[Q_AND_A.length];
     private boolean[] answersShowed = new boolean[4];
     private boolean rigthAnswer;
+    private boolean wrongAnswer;
     private String Q;
     private String A;
     private String B;
@@ -76,6 +77,7 @@ public class Questions implements KeyboardHandler{
     private Text text1;
     private Text text2;
     private Text text3;
+    private Text text4;
 
 
     //private Doors door = new Doors();
@@ -91,6 +93,13 @@ public class Questions implements KeyboardHandler{
             if (rigthAnswer){
                 doors.openDoor();
                 break;
+            }
+            if (wrongAnswer){
+                //deleteEverything();
+                doors.deletePadPictures();
+                //doors.getBackground().delete();
+                break;
+                //text4.draw();
             }
         }
         return;
@@ -218,6 +227,10 @@ public class Questions implements KeyboardHandler{
         text3.setColor(Color.WHITE);
         text3.draw();
 
+        text4 = new Text(80, 765, "Try again");
+        text4.setColor(Color.WHITE);
+
+
     }
 
     public void deleteEverything(){
@@ -242,6 +255,7 @@ public class Questions implements KeyboardHandler{
                 if (A == Q_AND_A[rightAnswerIndex][1]) {
                     rigthAnswer = true;
                 } else {
+                    wrongAnswer = true;
                     break;
                 }
 
@@ -250,6 +264,7 @@ public class Questions implements KeyboardHandler{
                 if (B == Q_AND_A[rightAnswerIndex][1]) {
                     rigthAnswer = true;
                 }else {
+                    wrongAnswer = true;
                     break;
                 }
 
@@ -257,6 +272,7 @@ public class Questions implements KeyboardHandler{
                 if (C == Q_AND_A[rightAnswerIndex][1]) {
                     rigthAnswer = true;
                 }else {
+                    wrongAnswer = true;
                     break;
                 }
 

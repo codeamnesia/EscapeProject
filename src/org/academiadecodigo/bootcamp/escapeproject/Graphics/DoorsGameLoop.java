@@ -2,6 +2,10 @@ package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
@@ -12,7 +16,7 @@ import static org.academiadecodigo.bootcamp.escapeproject.Graphics.Doors.MAX_NUM
 /**
  * Created by codecadet on 10/02/17.
  */
-public class DoorsGameLoop implements MouseHandler {
+public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable {
 
     private Doors door;
     private Questions question;
@@ -24,16 +28,42 @@ public class DoorsGameLoop implements MouseHandler {
         door = new Doors();
         question = new Questions();
 
-        Mouse m = new Mouse(this);
-        m.addEventListener(MouseEventType.MOUSE_CLICKED);
-        m.addEventListener(MouseEventType.MOUSE_MOVED);
+//        Mouse m = new Mouse(this);
+//        m.addEventListener(MouseEventType.MOUSE_CLICKED);
+//        m.addEventListener(MouseEventType.MOUSE_MOVED);
+
+        Keyboard k = new Keyboard(this);
+        KeyboardEvent event = new KeyboardEvent();
+        event.setKey(KeyboardEvent.KEY_1);
+        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event);
+
+        KeyboardEvent event1 = new KeyboardEvent();
+        event1.setKey(KeyboardEvent.KEY_2);
+        event1.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event1);
+
+        KeyboardEvent event2 = new KeyboardEvent();
+        event2.setKey(KeyboardEvent.KEY_3);
+        event2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event2);
+
+    }
+
+    public void test() throws InterruptedException {
+
+
+
         scene = new Rectangle(10.0, 10.0, 900, 900.0);
         scene.setColor(Color.BLACK);
         scene.draw();
     }
 
+    //TODO set para boolean de boneco a bloquear movimento e set para boolean de porta a abrir e fechar
 
-    public void start() throws InterruptedException{
+    //TODO ver se falta aqui um prompt
+
+    public void run() {
 
         clickCounter = 0;
         caughtAttention = false;
@@ -46,15 +76,24 @@ public class DoorsGameLoop implements MouseHandler {
 
             door.randomizeCharacters();
 
-            Thread.sleep(DoorsUtil.randomTime());
+            try {
+                Thread.sleep(DoorsUtil.randomTime());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 
             if (caughtAttention) {
 
-                question.start(door);
+                try {
+                    question.start(door);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+
 
                 //this.openDoor();
                 break;
-                //TODO sir dos whioles com retun;
             }
 
             /*if (clickCounter >= MAX_NUMBER_OF_CLICKS) {
@@ -63,8 +102,12 @@ public class DoorsGameLoop implements MouseHandler {
             }*/
 
         }
+        try {
+            Thread.sleep(300);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        Thread.sleep(300);
         closePrompt();
         return;
 
@@ -77,10 +120,11 @@ public class DoorsGameLoop implements MouseHandler {
         door.deleteDoors();
         door.getBackground().delete();
         question.deleteEverything();
-
+        door.resetIsPayingAttention();
+        return;
     }
 
-    @Override
+    /*@Override
     public void mouseClicked(MouseEvent e){
 
         if (door.getTheOnePayingAttention() != -1 && DoorsUtil.isWithin(e,
@@ -100,6 +144,48 @@ public class DoorsGameLoop implements MouseHandler {
     @Override
     public void mouseMoved(MouseEvent e) {
         System.out.println(e);
+
+    }*/
+
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+        switch (keyboardEvent.getKey()) {
+            case KeyboardEvent.KEY_1:
+                if (door.getTheOnePayingAttention() != -1 && door.getIsPayingAttention()[0]) {
+                    if (!caughtAttention) {
+                        door.getPicsPadawan()[door.getTheOnePayingAttention()][3].grow(20.0, 50.0);
+                    }
+                    caughtAttention = true;
+
+                }
+
+
+            case KeyboardEvent.KEY_2:
+                if (door.getTheOnePayingAttention() != -1 && door.getIsPayingAttention()[1]) {
+                    if (!caughtAttention) {
+                        door.getPicsPadawan()[door.getTheOnePayingAttention()][3].grow(20.0, 50.0);
+                    }
+                    caughtAttention = true;
+
+                }
+
+
+
+            case KeyboardEvent.KEY_3:
+                if (door.getTheOnePayingAttention() != -1 && door.getIsPayingAttention()[2]) {
+                    if (!caughtAttention) {
+                        door.getPicsPadawan()[door.getTheOnePayingAttention()][3].grow(20.0, 50.0);
+                    }
+                    caughtAttention = true;
+
+                }
+
+
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyboardEvent keyboardEvent) {
 
     }
 }

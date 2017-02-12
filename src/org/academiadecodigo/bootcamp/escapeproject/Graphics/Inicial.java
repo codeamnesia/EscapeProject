@@ -82,24 +82,23 @@ public class Inicial implements MouseHandler, Scenable {
     private void enterCycle() throws InterruptedException {
         while (true) {
             Thread.sleep(20);
-
             if (isStartPressed) {
                 this.start();
+                return;
             }
             if (isSleepRectPressed) {
                 this.initDoorLoopTester();
-                break;
+                return;
             }
-
         }
-        return;
     }
 
     private void initDoorLoopTester() throws InterruptedException {
         doorsGameLoop = new DoorsGameLoop();
-        doorsGameLoop.start();
+        doorsGameLoop.run();
         isSleepRectPressed = false;
         enterCycle();
+        return;
     }
 
 
@@ -176,7 +175,7 @@ public class Inicial implements MouseHandler, Scenable {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println(e);
+        //System.out.println(e);
 
     }
 

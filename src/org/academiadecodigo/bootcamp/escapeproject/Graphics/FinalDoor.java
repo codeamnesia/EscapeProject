@@ -267,42 +267,82 @@ public class FinalDoor implements MouseHandler, Scenable {
         bigMobille.delete();
         smallMobille.delete();
 
-        Thread.sleep(500);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         fdoor1.draw();
         fdoor7.delete();
 
-        Thread.sleep(200);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         fdoor2.draw();
         fdoor1.delete();
 
-        Thread.sleep(200);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         fdoor3.draw();
         fdoor2.delete();
 
-        Thread.sleep(200);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         fdoor4.draw();
         fdoor3.delete();
 
-        Thread.sleep(200);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         fdoor5.draw();
         fdoor4.delete();
 
-        Thread.sleep(200);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         fdoor6.draw();
         fdoor5.delete();
 
-        Thread.sleep(200);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         fdoor7.draw();
         fdoor6.delete();
 
-        Thread.sleep(2000);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         this.finished();
     }

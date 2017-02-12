@@ -9,11 +9,18 @@ public class DoorTester {
 
 //        DoorsGameLoop doorsGameLoop = new DoorsGameLoop();
 //
-//        doorsGameLoop.start();
+//        doorsGameLoop.run();
 
         Inicial inicial = new Inicial();
         inicial.prompt();
 
+//        ComputerPhoto computerPhoto = new ComputerPhoto();
+//        computerPhoto.prompt();
+
+//        FinalDoor finalDoor = new FinalDoor();
+//
+//        finalDoor.prompt();
+//
 
 
     }

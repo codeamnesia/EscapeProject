@@ -9,11 +9,12 @@ import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.swing.*;
+
 /**
  * Created by codecadet on 08/02/17.
  */
 public class Doors {
-
 
 
     private Picture background;
@@ -79,7 +80,11 @@ public class Doors {
         door7 = new Picture(315.0, 125.0, "resources/pics/d7.png");
 
 
+        //t.start();
+
+
         //this.start();
+        return;
 
     }
 
@@ -93,7 +98,12 @@ public class Doors {
         door7.draw();
         door1.delete();
 
-        Thread.sleep(200);
+        for (long i = 0; i <500000000 ; i++) {
+            for (int j = 0; j < 500000000   ; j++) {
+
+            }
+        }
+//        Thread.sleep(200);
 
         door6.draw();
         door7.delete();
@@ -103,31 +113,37 @@ public class Doors {
         door5.draw();
         door6.delete();
 
+
+
         Thread.sleep(200);
 
         door4.draw();
         door5.delete();
+
+
 
         Thread.sleep(200);
 
         door3.draw();
         door4.delete();
 
+
         Thread.sleep(200);
 
         door2.draw();
         door3.delete();
+
+
 
         Thread.sleep(200);
 
         door1.draw();
         door2.delete();
 
+
         Thread.sleep(1000);
 
         return;
-
-
 
     }
 
@@ -143,7 +159,7 @@ public class Doors {
         }
         deletePadPictures();
         Thread.sleep(30);
-
+        return;
     }
 
     public void looseChance() {
@@ -151,6 +167,7 @@ public class Doors {
         text.grow(200.0, 20.0);
         text.setColor(Color.MAGENTA);
         text.draw();
+        return;
     }
 
     public void deletePadPictures() {
@@ -159,14 +176,15 @@ public class Doors {
                 picsPadawan[i][j].delete();
             }
         }
+        return;
 
     }
 
     public boolean randomizeCharacters() {
 
         theOnePayingAttention = -1;
-        for (boolean b : isPayingAttention) {
-            b = false;
+        for (int i = 0; i < isPayingAttention.length; i++) {
+            isPayingAttention[i] = false;
         }
 
         if (DoorsUtil.isSomeOnePayingAttention()) {
@@ -186,6 +204,7 @@ public class Doors {
 
     public void deleteDoors(){
         door1.delete();
+        return;
     }
 
     public int getTheOnePayingAttention() {
@@ -198,6 +217,12 @@ public class Doors {
 
     public boolean[] getIsPayingAttention() {
         return isPayingAttention;
+    }
+
+    public void resetIsPayingAttention() {
+        for (int i = 0; i < isPayingAttention.length; i++) {
+            isPayingAttention[i] = false;
+        }
     }
 
     public Picture getBackground() {
