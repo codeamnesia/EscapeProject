@@ -15,7 +15,7 @@
 //
 //
 //
-//public class Sprite implements KeyboardHandler {
+//public class org.academiadecodigo.bootcamp.escapeproject.resources.Sprite implements KeyboardHandler {
 //
 //    private Keyboard keyboard;
 //    private Position pos;

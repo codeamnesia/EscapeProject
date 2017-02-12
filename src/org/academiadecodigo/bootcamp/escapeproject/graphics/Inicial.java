@@ -36,16 +36,16 @@ public class Inicial implements MouseHandler, Scenable {
 
         inicialSeq = new Picture[9];
 
-        inicialSeq[0] = new Picture(10, 10, "resources/pics/9.jpg");
-        inicialSeq[1] = new Picture(10, 10, "resources/pics/8.jpg");
-        inicialSeq[2] = new Picture(10, 10, "resources/pics/7.jpg");
-        inicialSeq[3] = new Picture(10, 10, "resources/pics/6.jpg");
-        inicialSeq[4] = new Picture(10, 10, "resources/pics/5.jpg");
-        inicialSeq[5] = new Picture(10, 10, "resources/pics/4.jpg");
-        inicialSeq[6] = new Picture(10, 10, "resources/pics/3.jpg");
-        inicialSeq[7] = new Picture(10, 10, "resources/pics/2.jpg");
-        inicialSeq[8] = new Picture(10, 10, "resources/pics/1.jpg");
-        first = new Picture(10, 10, "resources/pics/first.jpg");
+        inicialSeq[0] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/9.jpg");
+        inicialSeq[1] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/8.jpg");
+        inicialSeq[2] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/7.jpg");
+        inicialSeq[3] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/6.jpg");
+        inicialSeq[4] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/5.jpg");
+        inicialSeq[5] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/4.jpg");
+        inicialSeq[6] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/3.jpg");
+        inicialSeq[7] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/2.jpg");
+        inicialSeq[8] = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/1.jpg");
+        first = new Picture(10, 10, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/first.jpg");
         startRect = new Rectangle(660, 205, 130, 100);
         sleepRect = new Rectangle (680, 450, 130, 100);
 

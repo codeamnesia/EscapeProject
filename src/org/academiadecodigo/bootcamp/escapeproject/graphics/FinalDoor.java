@@ -85,7 +85,7 @@ public class FinalDoor implements MouseHandler, Scenable {
         scene.setColor(Color.BLACK);
         scene.draw();
 
-        background = new Picture(60.0, 60.0, "resources/pics/finalback.png");
+        background = new Picture(60.0, 60.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/finalback.png");
         background.draw();
 
         this.start();
@@ -95,10 +95,10 @@ public class FinalDoor implements MouseHandler, Scenable {
     public void start() throws InterruptedException {
 
 
-        smallMobille = new Picture(586.0, 503.0, "resources/pics/mbsmall.png");
+        smallMobille = new Picture(586.0, 503.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/mbsmall.png");
         smallMobille.draw();
 
-        bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
+        bigMobille = new Picture(270.0, 80.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/mobile.png");
 
         mobile0 = new Rectangle(350, 509, 45, 30);
         mobile0.setColor(Color.YELLOW);
@@ -264,13 +264,13 @@ public class FinalDoor implements MouseHandler, Scenable {
 
         fdoors = new Picture[7];
 
-        fdoors[0] = new Picture(430, 235, "resources/pics/fd1.png");
-        fdoors[1] = new Picture(430, 235, "resources/pics/fd2.png");
-        fdoors[2] = new Picture(430, 236, "resources/pics/fd3.png");
-        fdoors[3] = new Picture(430, 228, "resources/pics/fd4.png");
-        fdoors[4] = new Picture(430, 230, "resources/pics/fd5.png");
-        fdoors[5] = new Picture(430, 230, "resources/pics/fd6.png");
-        fdoors[6] = new Picture(430, 230, "resources/pics/fd7.png");
+        fdoors[0] = new Picture(430, 235, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd1.png");
+        fdoors[1] = new Picture(430, 235, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd2.png");
+        fdoors[2] = new Picture(430, 236, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd3.png");
+        fdoors[3] = new Picture(430, 228, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd4.png");
+        fdoors[4] = new Picture(430, 230, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd5.png");
+        fdoors[5] = new Picture(430, 230, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd6.png");
+        fdoors[6] = new Picture(430, 230, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd7.png");
 
 
         bigMobille.delete();
@@ -300,7 +300,7 @@ public class FinalDoor implements MouseHandler, Scenable {
     //GOD'S appearence
     private void finished() {
 
-        godRui = new Picture(60.0, 60.0, "resources/pics/godRui.jpg");
+        godRui = new Picture(60.0, 60.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/godRui.jpg");
 
         background.delete();
 

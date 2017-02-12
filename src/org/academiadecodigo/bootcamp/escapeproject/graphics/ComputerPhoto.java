@@ -17,7 +17,7 @@ public class ComputerPhoto implements Scenable, MouseHandler {
 
     @Override
     public void prompt() throws InterruptedException {
-        computer = new Picture(60, 60, "resources/pics/computer.jpg");
+        computer = new Picture(60, 60, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/computer.jpg");
         computer.draw();
 
         Mouse m = new Mouse(this);

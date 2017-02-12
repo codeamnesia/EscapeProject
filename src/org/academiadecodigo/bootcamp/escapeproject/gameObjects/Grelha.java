@@ -32,6 +32,8 @@ public class Grelha {
 
 
 
+
+
     /**
      *        0      300     600     900
      *     0 -|-------|-------|-------|-
@@ -94,20 +96,19 @@ public class Grelha {
         rooms = new Room[9];            //9 rooms
         defineRooms();
         rooms[8].setHidden(false);
+        rooms[8].changePic();
 
 
         //rooms[8].changePic(rooms[8].getPicture(0));
 //
-//        Sprite extra = new Sprite(new Picture(865,865,"resources/sprite and rooms/spritefront.jpg"),10);
+//        org.academiadecodigo.bootcamp.escapeproject.resources.Sprite extra = new org.academiadecodigo.bootcamp.escapeproject.resources.Sprite(new Picture(865,865,"resources/sprite and rooms/spritefront.jpg"),10);
 //
 //        sprite = extra;
 
         //todo: sprite pictures spritePictures = {the 4 pictures};
-//        sprite = new Sprite(spritePictures, 10);
+//        sprite = new org.academiadecodigo.bootcamp.escapeproject.resources.Sprite(spritePictures, 10);
 
     }
-
-
 
     private void defineRooms() {
         int counter =0;
@@ -128,6 +129,28 @@ public class Grelha {
             }
         }
     }
+
+    private void changeRoomPhoto(){
+
+        //initites all the sceneries
+
+        Picture p8grass0 = new Picture(rooms[8].getRoomPosition().getX(),rooms[8].getRoomPosition().getY(),"resources/Rooms/defaults/8grass0.jpg");
+        Picture p7class0 = new Picture(rooms[7].getRoomPosition().getX(),rooms[7].getRoomPosition().getY(),"resources/Rooms/defaults/7classroom0.jpg");
+        Picture p6copa0 = new Picture(rooms[6].getRoomPosition().getX(),rooms[6].getRoomPosition().getY(),"resources/Rooms/defaults/6copa0.jpg");
+        Picture p5wc0 = new Picture(rooms[5].getRoomPosition().getX(),rooms[5].getRoomPosition().getY(),"resources/Rooms/defaults/5wc0.jpg");
+        Picture p4hall0 = new Picture(rooms[4].getRoomPosition().getX(),rooms[4].getRoomPosition().getY(),"resources/Rooms/defaults/4hall0.jpg");
+        Picture p3boss0 = new Picture(rooms[3].getRoomPosition().getX(),rooms[3].getRoomPosition().getY(),"resources/Rooms/defaults/3boos0.jpg");
+        Picture p2toilet0 = new Picture(rooms[2].getRoomPosition().getX(),rooms[2].getRoomPosition().getY(),"resources/Rooms/defaults/2toiletClue.jpg");
+        Picture p1secret0 = new Picture(rooms[1].getRoomPosition().getX(),rooms[1].getRoomPosition().getY(),"resources/Rooms/defaults/1secretroom0.jpg");
+        Picture p0exit0 = new Picture(rooms[0].getRoomPosition().getX(),rooms[0].getRoomPosition().getY(),"resources/Rooms/defaults/0exit0.jpg");
+
+        RO
+
+
+
+
+    }
+
 
 
     //auxiliary method to put all the Doors into its array

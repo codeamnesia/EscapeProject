@@ -35,10 +35,10 @@ public class Sprite{
 
 
     //Constructor. You can define the picture and the speed of the sprite.
-//    public Sprite(Picture [] pics, int movSpeed) {
+//    public org.academiadecodigo.bootcamp.escapeproject.resources.Sprite(Picture [] org.academiadecodigo.bootcamp.escapeproject.resources.pics, int movSpeed) {
 //        mov = movSpeed;
-//        spriteImages = pics;
-//        currentSprite = pics[0];
+//        spriteImages = org.academiadecodigo.bootcamp.escapeproject.resources.pics;
+//        currentSprite = org.academiadecodigo.bootcamp.escapeproject.resources.pics[0];
 //        currentSprite.draw();
 //        spriteCollisionDetector = new Rectangle(currentSprite.getX(), currentSprite.getY(), currentSprite.getWidth(), currentSprite.getHeight() / 2);
 //        x = spriteCollisionDetector.getX();             //left-top collision corner

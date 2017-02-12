@@ -8,11 +8,11 @@
 // */
 //public class CollisionDetector {
 //
-//    private Sprite sprite;
+//    private org.academiadecodigo.bootcamp.escapeproject.resources.Sprite sprite;
 //    private Grid grid;
 //    private boolean collided;
 //
-//        public CollisionDetector(Sprite sprite){
+//        public CollisionDetector(org.academiadecodigo.bootcamp.escapeproject.resources.Sprite sprite){
 //            this.sprite = sprite;
 //        }
 //
@@ -21,7 +21,7 @@
 //
 //
 //
-//    public void inDoor(Sprite sprite){
+//    public void inDoor(org.academiadecodigo.bootcamp.escapeproject.resources.Sprite sprite){
 //        if(sprite.getPos().equals(door.getPos)){
 //            collided = true;
 //        }
@@ -32,9 +32,9 @@
 //         * Requires iterating the array once
 //         * @param sprite
 //         */
-//        public void check(Sprite sprite) {
+//        public void check(org.academiadecodigo.bootcamp.escapeproject.resources.Sprite sprite) {
 //
-//            for (Sprite sprite1: sprite) {
+//            for (org.academiadecodigo.bootcamp.escapeproject.resources.Sprite sprite1: sprite) {
 //
 //                // No point in checking collisions with self
 //                if (ic == car) {
