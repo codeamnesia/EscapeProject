@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
 
+import org.academiadecodigo.bootcamp.escapeproject.graphics.DoorsGameLoop;
 import org.academiadecodigo.bootcamp.escapeproject.position.Direction;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -17,9 +18,11 @@ public class KeyboardInput implements KeyboardHandler{
     private int steps;//number of moves made so far. it's reset when a door is found
 //    private int mov = 10;
     private Grelha grid;
+    private DoorsGameLoop doorsGameLoop;
 
 
-    public KeyboardInput(Grelha grid) {
+    public KeyboardInput(Grelha grid, DoorsGameLoop doorsGameLoop) {
+        //this.doorsGameLoop = doorsGameLoop;
         this.grid=grid;
         start ();
     }
@@ -53,9 +56,24 @@ public void start(){
     left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
     right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+    KeyboardEvent event = new KeyboardEvent();
+    event.setKey(KeyboardEvent.KEY_1);
+    event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+    k.addEventListener(event);
 
-//    event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-//    k.addEventListener(event);
+    KeyboardEvent event1 = new KeyboardEvent();
+    event1.setKey(KeyboardEvent.KEY_2);
+    event1.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+    k.addEventListener(event1);
+
+    KeyboardEvent event2 = new KeyboardEvent();
+    event2.setKey(KeyboardEvent.KEY_3);
+    event2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+    k.addEventListener(event2);
+
+
+    event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+    k.addEventListener(event);
 
 
 
@@ -95,12 +113,48 @@ public void start(){
                     //arrancar aqui o prompt.
                 }
                 break;
+            case KeyboardEvent.KEY_1:
+                if (doorsGameLoop.getDoor().getTheOnePayingAttention() != -1 && doorsGameLoop.getDoor().getIsPayingAttention()[0]) {
+                    if (!doorsGameLoop.isCaughtAttention()) {
+                        doorsGameLoop.getDoor().getPicsPadawan()[doorsGameLoop.getDoor().getTheOnePayingAttention()][3].grow(16.0, 50.0);
+                    }
+                    doorsGameLoop.setCaughtAttention(true);
+
+                }
+                break;
+
+
+            case KeyboardEvent.KEY_2:
+                if (doorsGameLoop.getDoor().getTheOnePayingAttention() != -1 && doorsGameLoop.getDoor().getIsPayingAttention()[1]) {
+                    if (!doorsGameLoop.isCaughtAttention()) {
+                        doorsGameLoop.getDoor().getPicsPadawan()[doorsGameLoop.getDoor().getTheOnePayingAttention()][3].grow(16.0, 50.0);
+                    }
+                    doorsGameLoop.setCaughtAttention(true);
+
+                }
+                break;
+
+
+
+            case KeyboardEvent.KEY_3:
+                if (doorsGameLoop.getDoor().getTheOnePayingAttention() != -1 && doorsGameLoop.getDoor().getIsPayingAttention()[2]) {
+                    if (!doorsGameLoop.isCaughtAttention()) {
+                        doorsGameLoop.getDoor().getPicsPadawan()[doorsGameLoop.getDoor().getTheOnePayingAttention()][3].grow(16.0, 50.0);
+                    }
+                    doorsGameLoop.setCaughtAttention(true);
+
+                }
+                break;
         }
     }
+
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
     }
 
+    public void setDoorsGameLoop(DoorsGameLoop doorsGameLoop) {
+        this.doorsGameLoop = doorsGameLoop;
+    }
 }

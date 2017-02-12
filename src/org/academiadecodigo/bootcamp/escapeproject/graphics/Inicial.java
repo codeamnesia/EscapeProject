@@ -77,8 +77,8 @@ public class Inicial implements MouseHandler, Scenable {
     }
 
     private void initDoorLoopTester() throws InterruptedException {
-        doorsGameLoop = new DoorsGameLoop();
-        doorsGameLoop.run();
+        //doorsGameLoop = new DoorsGameLoop();
+        //doorsGameLoop.prompt();
         isSleepRectPressed = false;
         enterCycle();
         return;

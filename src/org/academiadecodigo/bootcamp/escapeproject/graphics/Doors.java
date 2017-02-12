@@ -41,22 +41,24 @@ public class Doors {
 
         //Creates Background picture for questions levels
         background = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
-        background.draw();
+        //background.draw();
+
+        System.out.println("EEE");
 
         number1Joana = new Text(200.0, 180.0, "1");
         number1Joana.setColor(Color.WHITE);
         number1Joana.grow(10.0,10.0);
-        number1Joana.draw();
+        //number1Joana.draw();
 
         number2Jorge = new Text(440.0, 180.0, "2");
         number2Jorge.setColor(Color.WHITE);
         number2Jorge.grow(10.0,10.0);
-        number2Jorge.draw();
+        //number2Jorge.draw();
 
         number3Rodolfo = new Text(640.0, 180.0, "3");
         number3Rodolfo.setColor(Color.WHITE);
         number3Rodolfo.grow(10.0,10.0);
-        number3Rodolfo.draw();
+        //number3Rodolfo.draw();
 
         picsPadawan = new Picture[3][4];
 
@@ -201,5 +203,17 @@ public class Doors {
 
     public Picture getBackground() {
         return background;
+    }
+
+    public Text getNumber1Joana() {
+        return number1Joana;
+    }
+
+    public Text getNumber2Jorge() {
+        return number2Jorge;
+    }
+
+    public Text getNumber3Rodolfo() {
+        return number3Rodolfo;
     }
 }

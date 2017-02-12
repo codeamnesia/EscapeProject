@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
+import org.academiadecodigo.bootcamp.escapeproject.gameObjects.Grelha;
+
 /**
  * Created by codecadet on 08/02/17.
  */
@@ -17,13 +19,12 @@ public class DoorTester {
 //        ComputerPhoto computerPhoto = new ComputerPhoto();
 //        computerPhoto.prompt();
 
-        FinalDoor f = new FinalDoor();
+//        FinalDoor f = new FinalDoor();
+//
+//        f.prompt();
 
-        f.prompt();
-
-//        Grelha g = new Grelha();
-//        g.init();
-
+        Grelha g = new Grelha();
+        g.init();
     }
 
 }
