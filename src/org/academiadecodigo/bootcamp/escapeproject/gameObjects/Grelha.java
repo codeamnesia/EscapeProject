@@ -144,11 +144,6 @@ public class Grelha {
         Picture p1secret0 = new Picture(rooms[1].getRoomPosition().getX(),rooms[1].getRoomPosition().getY(),"resources/Rooms/defaults/1secretroom0.jpg");
         Picture p0exit0 = new Picture(rooms[0].getRoomPosition().getX(),rooms[0].getRoomPosition().getY(),"resources/Rooms/defaults/0exit0.jpg");
 
-        RO
-
-
-
-
     }
 
 

@@ -22,7 +22,9 @@ public class FinalDoor implements MouseHandler, Scenable {
     private Picture smallMobille;
     private Picture bigMobille;
     private Picture godRui;
-
+    private Text finalText1;
+    private Text finalText2;
+    private Rectangle finalTextRect;
 
     //Text box for mobile screen
     private Text mobileText1;
@@ -300,8 +302,18 @@ public class FinalDoor implements MouseHandler, Scenable {
     //GOD'S appearence
     private void finished() {
 
-        godRui = new Picture(60.0, 60.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/godRui.jpg");
-
+        godRui = new Picture(10.0, 10.0, "resources/pics/godRui900.jpg");
+        finalText1 = new Text(400.0, 600.0, "<You_escaped_the_burnout!>");
+        finalText2 = new Text(400.0, 700.0, "#accept_it");
+        finalTextRect = new Rectangle(10.0, 516.0, 900.0, 395.0);
+        finalTextRect.setColor(Color.BLACK);
+        finalTextRect.fill();
+        finalText1.setColor(Color.WHITE);
+        finalText2.setColor(Color.WHITE);
+        finalText1.grow(250.0, 20.0);
+        finalText2.grow(100.0, 20.0);
+        finalText1.draw();
+        finalText2.draw();
         background.delete();
 
         godRui.draw();
