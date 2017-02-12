@@ -1,7 +1,7 @@
 //package org.academiadecodigo.bootcamp.escapeproject.Game;
 //
-//import org.academiadecodigo.bootcamp.escapeproject.Character.CollisionDetector;
-//import org.academiadecodigo.bootcamp.escapeproject.Character.Sprite;
+//import org.academiadecodigo.bootcamp.escapeproject.character.CollisionDetector;
+//import org.academiadecodigo.bootcamp.escapeproject.character.Sprite;
 //
 ///**
 // * Created by codecadet on 05/02/17.

@@ -11,7 +11,7 @@ public class Main {
 
 
 //
-//        Game game = new Game();
+//        game game = new game();
 //
 //        game.init();
 //

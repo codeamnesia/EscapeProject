@@ -10,7 +10,7 @@
 // * Created by codecadet on 05/02/17.
 // */
 //
-////I had to call it Player because Character is reserved in Java, also Luis made the sprite movements Sofia is going to make the actual sprite
+////I had to call it Player because character is reserved in Java, also Luis made the sprite movements Sofia is going to make the actual sprite
 //
 //
 //

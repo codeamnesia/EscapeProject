@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.escapeproject.Character;
+package org.academiadecodigo.bootcamp.escapeproject.character;
 
 /**
  * Created by codecadet on 05/02/17.
