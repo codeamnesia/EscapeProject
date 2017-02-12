@@ -52,32 +52,21 @@ public class Inicial implements MouseHandler, Scenable {
         inicial8 = new Picture(10, 10, "resources/pics/2.jpg");
         inicial9 = new Picture(10, 10, "resources/pics/1.jpg");
         first = new Picture(10, 10, "resources/pics/first.jpg");
-        start = new Rectangle(670, 205, 100, 100);
-        sleepRect = new Rectangle (670, 500, 100, 100);
+        start = new Rectangle(660, 205, 130, 100);
+        sleepRect = new Rectangle (680, 450, 130, 100);
 
         first.draw();
         start.setColor(Color.YELLOW);
-        start.draw();
+        //start.draw();
 
         sleepRect.setColor(Color.YELLOW);
-        sleepRect.draw();
+        //sleepRect.draw();
 
         enterCycle();
 
-        /*while (true) {
-            Thread.sleep(20);
-
-            if (isStartPressed) {
-                this.start();
-            }
-            if (isSleepRectPressed) {
-                this.initDoorLoopTester();
-                break;
-            }
-
-        }*/
-
     }
+
+    //TODO por ZZZZZZZ a funcionar no Blumel
 
     private void enterCycle() throws InterruptedException {
         while (true) {

@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class DoorsUtil {
 
     public static long randomTime() {
-        return 800 + (long) (Math.random() * 500);
+        return 500 + (long) (Math.random() * 300);
     }
 
     public static int randomizeDistracted() {
@@ -22,7 +22,7 @@ public class DoorsUtil {
     }
 
     public static boolean isSomeOnePayingAttention() {
-        return Math.random() < 0.3;
+        return Math.random() < 0.10;
     }
 
     public static boolean isWithin(MouseEvent e, Picture p) {

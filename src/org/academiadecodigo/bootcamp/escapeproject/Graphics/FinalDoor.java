@@ -267,81 +267,62 @@ public class FinalDoor implements MouseHandler, Scenable {
         bigMobille.delete();
         smallMobille.delete();
 
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
+        //TODO passar isto a array
 
-            }
+        Thread.sleep(200);
+
+        fdoors[0].draw();
+
+//        fdoor1.draw();
+//        fdoor7.delete();
+
+//        for (long i = 0; i <500000000 ; i++) {
+//            for (int j = 0; j < 500000000   ; j++) {
+//
+//            }
+//        }
+
+        Thread.sleep(200);
+
+        for (int i = 0; i < fdoors.length - 1; i++) {
+
+            fdoors[i + 1].draw();
+            fdoors[i].delete();
+
+            Thread.sleep(200);
+
         }
+
+        fdoors[fdoors.length - 1].draw();
+
+//        fdoor2.draw();
+//        fdoor1.delete();
+//
 //        Thread.sleep(200);
-
-        fdoor1.draw();
-        fdoor7.delete();
-
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
+//
+//        fdoor3.draw();
+//        fdoor2.delete();
+//
 //        Thread.sleep(200);
-
-        fdoor2.draw();
-        fdoor1.delete();
-
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
+//
+//        fdoor4.draw();
+//        fdoor3.delete();
+//
 //        Thread.sleep(200);
-
-        fdoor3.draw();
-        fdoor2.delete();
-
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
+//
+//        fdoor5.draw();
+//        fdoor4.delete();
+//
 //        Thread.sleep(200);
-
-        fdoor4.draw();
-        fdoor3.delete();
-
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
+//
+//        fdoor6.draw();
+//        fdoor5.delete();
+//
 //        Thread.sleep(200);
-
-        fdoor5.draw();
-        fdoor4.delete();
-
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
-//        Thread.sleep(200);
-
-        fdoor6.draw();
-        fdoor5.delete();
-
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
-//        Thread.sleep(200);
-
-        fdoor7.draw();
-        fdoor6.delete();
-
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
+//
+//        fdoor7.draw();
+//        fdoor6.delete();
+//
 //        Thread.sleep(200);
 
         this.finished();

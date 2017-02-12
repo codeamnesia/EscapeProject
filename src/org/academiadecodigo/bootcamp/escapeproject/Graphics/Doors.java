@@ -30,6 +30,9 @@ public class Doors {
     private Picture door6;
     private Picture door7;
 
+    private Text number1Joana;
+    private Text number2Jorge;
+    private Text number3Rodolfo;
 
     private int theOnePayingAttention;
     private boolean[] isPayingAttention = {false, false, false};
@@ -46,11 +49,27 @@ public class Doors {
 
     private void init() throws InterruptedException{
 
+        //TODO só pode haver um objecto questions no jogo todo, criar este objecto na grid ou no game
         questions = new Questions();
 
         //Creates Background picture for questions levels
         background = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
         background.draw();
+
+        number1Joana = new Text(200.0, 180.0, "1");
+        number1Joana.setColor(Color.WHITE);
+        number1Joana.grow(10.0,10.0);
+        number1Joana.draw();
+
+        number2Jorge = new Text(440.0, 180.0, "2");
+        number2Jorge.setColor(Color.WHITE);
+        number2Jorge.grow(10.0,10.0);
+        number2Jorge.draw();
+
+        number3Rodolfo = new Text(640.0, 180.0, "3");
+        number3Rodolfo.setColor(Color.WHITE);
+        number3Rodolfo.grow(10.0,10.0);
+        number3Rodolfo.draw();
 
         picsPadawan = new Picture[3][4];
 
@@ -79,11 +98,6 @@ public class Doors {
         door6 = new Picture(315.0, 125.0, "resources/pics/d6.png");
         door7 = new Picture(315.0, 125.0, "resources/pics/d7.png");
 
-
-        //t.start();
-
-
-        //this.start();
         return;
 
     }
@@ -98,12 +112,7 @@ public class Doors {
         door7.draw();
         door1.delete();
 
-        for (long i = 0; i <500000000 ; i++) {
-            for (int j = 0; j < 500000000   ; j++) {
-
-            }
-        }
-//        Thread.sleep(200);
+        Thread.sleep(200);
 
         door6.draw();
         door7.delete();
@@ -152,7 +161,7 @@ public class Doors {
         for (int k = 0; k < 10; k++) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 4; j++) {
-                    picsPadawan[i][j].grow(-5.0, -10.0);
+                    picsPadawan[i][j].grow(-3.5, -10.0);
                     Thread.sleep(15);
                 }
             }
@@ -223,6 +232,12 @@ public class Doors {
         for (int i = 0; i < isPayingAttention.length; i++) {
             isPayingAttention[i] = false;
         }
+    }
+
+    public void deleteNumbers() {
+        number1Joana.delete();
+        number2Jorge.delete();
+        number3Rodolfo.delete();
     }
 
     public Picture getBackground() {

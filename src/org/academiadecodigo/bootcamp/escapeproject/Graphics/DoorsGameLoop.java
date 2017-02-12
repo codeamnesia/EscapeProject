@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 
+import org.academiadecodigo.bootcamp.escapeproject.Scenable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -16,7 +17,7 @@ import static org.academiadecodigo.bootcamp.escapeproject.Graphics.Doors.MAX_NUM
 /**
  * Created by codecadet on 10/02/17.
  */
-public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable {
+public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
 
     private Doors door;
     private Questions question;
@@ -61,7 +62,10 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
 
     //TODO set para boolean de boneco a bloquear movimento e set para boolean de porta a abrir e fechar
 
-    //TODO ver se falta aqui um prompt
+
+    public void prompt() {
+        run();
+    }
 
     public void run() {
 
@@ -90,9 +94,6 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
-
-
-                //this.openDoor();
                 break;
             }
 
@@ -114,11 +115,11 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
 
     }
 
-    //TODo apagar quadrado quando resposta correcta e acrescentar return nos metodos void!
 
     public void closePrompt() {
         door.deleteDoors();
         door.getBackground().delete();
+        door.deleteNumbers();
         question.deleteEverything();
         door.resetIsPayingAttention();
         return;
@@ -147,17 +148,13 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
 
     }*/
 
-    //TODO por numeros de 1 a 3 sobre as imagens
-
-    //TODO por ZZZZZZZ a funcionar no Blumel
-
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_1:
                 if (door.getTheOnePayingAttention() != -1 && door.getIsPayingAttention()[0]) {
                     if (!caughtAttention) {
-                        door.getPicsPadawan()[door.getTheOnePayingAttention()][3].grow(20.0, 50.0);
+                        door.getPicsPadawan()[door.getTheOnePayingAttention()][3].grow(16.0, 50.0);
                     }
                     caughtAttention = true;
 
