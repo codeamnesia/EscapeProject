@@ -54,7 +54,7 @@ public class Grelha {
 
     public Grelha(){
 
-        sprite = new Sprite();
+
         collider = new Collider();
         keyboardInput = new KeyboardInput(this);
         //keyboardInput.setSprite(sprite);
@@ -95,9 +95,11 @@ public class Grelha {
 
         rooms = new Room[9];            //9 rooms
         defineRooms();
+        setRoomPic();
         rooms[8].setHidden(false);
-        rooms[8].changePic();
+        rooms[8].printCurrentPic();
 
+        sprite = new Sprite();
 
         //rooms[8].changePic(rooms[8].getPicture(0));
 //
@@ -130,9 +132,10 @@ public class Grelha {
         }
     }
 
-    private void changeRoomPhoto(){
+    private void setRoomPic(){
 
-        //initites all the sceneries
+        //stores all the sceneries
+// TODO: 12/02/17 in a more advanced version, have an array of pictures for each room;
 
         Picture p8grass0 = new Picture(rooms[8].getRoomPosition().getX(),rooms[8].getRoomPosition().getY(),"resources/Rooms/defaults/8grass0.jpg");
         Picture p7class0 = new Picture(rooms[7].getRoomPosition().getX(),rooms[7].getRoomPosition().getY(),"resources/Rooms/defaults/7classroom0.jpg");
@@ -144,10 +147,15 @@ public class Grelha {
         Picture p1secret0 = new Picture(rooms[1].getRoomPosition().getX(),rooms[1].getRoomPosition().getY(),"resources/Rooms/defaults/1secretroom0.jpg");
         Picture p0exit0 = new Picture(rooms[0].getRoomPosition().getX(),rooms[0].getRoomPosition().getY(),"resources/Rooms/defaults/0exit0.jpg");
 
-        RO
-
-
-
+        rooms[8].setCurrentPic(p8grass0);
+        rooms[7].setCurrentPic(p7class0);
+        rooms[6].setCurrentPic(p6copa0);
+        rooms[5].setCurrentPic(p5wc0);
+        rooms[4].setCurrentPic(p4hall0);
+        rooms[3].setCurrentPic(p3boss0);
+        rooms[2].setCurrentPic(p2toilet0);
+        rooms[1].setCurrentPic(p1secret0);
+        rooms[0].setCurrentPic(p0exit0);
 
     }
 

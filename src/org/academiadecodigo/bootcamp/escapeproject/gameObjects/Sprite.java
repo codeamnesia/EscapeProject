@@ -50,7 +50,7 @@ public class Sprite{
 
     public Sprite() {
         //mov = movSpeed;
-        currentSprite = new Picture(750,850,"resources/sprite and rooms/spritefront.jpg");
+        currentSprite = new Picture(750,850,"resources/Sprite/spritefront.jpg");
 
        //currentSprite = pic;
 //
