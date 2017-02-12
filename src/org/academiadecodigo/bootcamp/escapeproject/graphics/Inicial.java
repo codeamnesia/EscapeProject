@@ -105,7 +105,7 @@ public class Inicial implements MouseHandler, Scenable {
     public void mouseClicked(MouseEvent e) {
 
         if (DoorsUtil.isWithin(e, startRect)) {
-            System.out.println(e);
+            System.out.println();
             isStartPressed = true;
         }
 

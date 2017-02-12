@@ -119,7 +119,7 @@ public class Grelha {
 
         Picture p8grass0 = new Picture(rooms[8].getRoomPosition().getX(), rooms[8].getRoomPosition().getY(), "resources/Rooms/defaults/8grass0.jpg");
         rooms[8].setCurrentPic(p8grass0);
-
+        
         Picture p7class0 = new Picture(rooms[7].getRoomPosition().getX(), rooms[7].getRoomPosition().getY(), "resources/Rooms/defaults/7classroom0.jpg");
         rooms[7].setCurrentPic(p7class0);
 
@@ -137,6 +137,8 @@ public class Grelha {
 
         Picture p2toilet0 = new Picture(rooms[2].getRoomPosition().getX(), rooms[2].getRoomPosition().getY(), "resources/Rooms/defaults/2toiletClue.jpg");
         rooms[2].setCurrentPic(p2toilet0);
+
+
 
         Picture p1secret0 = new Picture(rooms[1].getRoomPosition().getX(), rooms[1].getRoomPosition().getY(), "resources/Rooms/defaults/1secretroom0.jpg");
         rooms[1].setCurrentPic(p1secret0);

@@ -19,9 +19,9 @@ public class DoorTester {
 //        ComputerPhoto computerPhoto = new ComputerPhoto();
 //        computerPhoto.prompt();
 
-//        FinalDoor f = new FinalDoor();
-//
-//        f.prompt();
+        FinalDoor f = new FinalDoor();
+
+        f.prompt();
 
         Grelha grelha = new Grelha();
         grelha.init();
