@@ -147,6 +147,10 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
 
     }*/
 
+    //TODO por numeros de 1 a 3 sobre as imagens
+
+    //TODO por ZZZZZZZ a funcionar no Blumel
+
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
@@ -158,6 +162,7 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
                     caughtAttention = true;
 
                 }
+                break;
 
 
             case KeyboardEvent.KEY_2:
@@ -168,6 +173,7 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
                     caughtAttention = true;
 
                 }
+                break;
 
 
 
@@ -179,6 +185,7 @@ public class DoorsGameLoop implements /*MouseHandler*/ KeyboardHandler, Runnable
                     caughtAttention = true;
 
                 }
+                break;
 
 
         }
