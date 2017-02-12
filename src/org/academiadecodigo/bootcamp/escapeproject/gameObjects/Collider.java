@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
 
 
 import org.academiadecodigo.bootcamp.escapeproject.gameObjects.Wall;
+import org.academiadecodigo.bootcamp.escapeproject.graphics.Doors;
 import org.academiadecodigo.bootcamp.escapeproject.position.Direction;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 
@@ -76,7 +77,7 @@ public class Collider {
                 (rw>=tx && rw<=tw && rh>=ty && rh<=th);         //tx < rw < tw  &&  ty < rh < th
     }
 
-    public boolean intersects(Wall[] walls, Shape r, Direction direction, int mov) {
+    public boolean intersectsWall (Wall[] walls, Shape r, Direction direction, int mov) {
         for (Wall wall : walls) {
             if (intersects(wall.getRectangle(),r,direction,mov)) {
                 return true;
@@ -84,6 +85,34 @@ public class Collider {
         }
         return false;
     }
+
+    public boolean intersectsRoom (Room[] rooms, Shape r, Direction direction, int mov) {
+        for (Room room : rooms) {
+            if (intersects(room.getRoomPosition(),r,direction,mov)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean intersectsDoorsHitbox (GridDoor[] doors, Shape r, Direction direction, int mov) {
+        for (GridDoor door : doors) {
+            if (intersects(door.getHitBoxPrompt(),r,direction,mov)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean intersectsDoors (GridDoor[] doors, Shape r, Direction direction, int mov) {
+        for (GridDoor door : doors) {
+            if (intersects(door.getRoomDoor(),r,direction,mov)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * tX - - - - - tW

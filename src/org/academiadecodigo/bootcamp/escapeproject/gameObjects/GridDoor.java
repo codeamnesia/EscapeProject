@@ -28,7 +28,9 @@ public class GridDoor {
     public GridDoor(Rectangle roomDoor){
         this.roomDoor = roomDoor;
         hitBoxPrompt = new Rectangle (roomDoor.getX() - 5, roomDoor.getY() - 5, roomDoor.getWidth() + 10, roomDoor.getHeight() + 10);   // changed from 10 to 5
-        locked = true;
+        locked = false;
+
+        //TODO turn locked into true when tests finish
 
     }
 

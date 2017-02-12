@@ -26,6 +26,8 @@ public class DoorTester {
         Grelha grelha = new Grelha();
         grelha.init();
 
+        //TODO turn Gridodoo locked into true when tests finish
+
     }
 
 }
