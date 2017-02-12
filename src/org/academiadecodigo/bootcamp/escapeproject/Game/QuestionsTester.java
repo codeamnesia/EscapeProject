@@ -1,6 +1,6 @@
-package org.academiadecodigo.bootcamp.escapeproject.Game;
+package org.academiadecodigo.bootcamp.escapeproject.game;
 
-import org.academiadecodigo.bootcamp.escapeproject.Graphics.Questions;
+import org.academiadecodigo.bootcamp.escapeproject.graphics.Questions;
 
 /**
  * Created by codecadet on 09/02/17.

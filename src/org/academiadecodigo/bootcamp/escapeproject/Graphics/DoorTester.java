@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.escapeproject.Graphics;
+package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
 /**
  * Created by codecadet on 08/02/17.
@@ -11,17 +11,18 @@ public class DoorTester {
 //
 //        doorsGameLoop.run();
 
-        Inicial inicial = new Inicial();
-        inicial.prompt();
+//        Inicial inicial = new Inicial();
+//        inicial.prompt();
 
 //        ComputerPhoto computerPhoto = new ComputerPhoto();
 //        computerPhoto.prompt();
 
-//        FinalDoor finalDoor = new FinalDoor();
+//        FinalDoor f = new FinalDoor();
 //
-//        finalDoor.prompt();
+//        f.prompt();
 
-
+//        Grelha g = new Grelha();
+//        g.init();
 
     }
 

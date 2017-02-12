@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.escapeproject.Graphics;
+package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;

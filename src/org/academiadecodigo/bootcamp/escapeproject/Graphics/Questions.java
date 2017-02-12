@@ -1,6 +1,5 @@
-package org.academiadecodigo.bootcamp.escapeproject.Graphics;
+package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
-import org.academiadecodigo.bootcamp.escapeproject.Graphics.Doors;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -8,10 +7,6 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 
 /**
  * Created by codecadet on 07/02/17.

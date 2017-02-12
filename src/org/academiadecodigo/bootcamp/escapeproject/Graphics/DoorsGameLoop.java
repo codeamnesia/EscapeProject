@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.escapeproject.Graphics;
+package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
 import org.academiadecodigo.bootcamp.escapeproject.Scenable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -7,12 +7,6 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-
-import static org.academiadecodigo.bootcamp.escapeproject.Graphics.Doors.MAX_NUMBER_OF_CLICKS;
 
 /**
  * Created by codecadet on 10/02/17.

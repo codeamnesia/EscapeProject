@@ -1,15 +1,8 @@
-package org.academiadecodigo.bootcamp.escapeproject.Graphics;
+package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import javax.swing.*;
 
 /**
  * Created by codecadet on 08/02/17.
