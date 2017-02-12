@@ -38,8 +38,8 @@ public class Questions implements KeyboardHandler{
             {"Fonts that contain small decorative lines at the end of a stroke are known as what?","Serif Fonts","Hobeaux Rococeaux","Niveau Grotesk"},
             {"In what year was the iPhone first released?","2007","2002","2005"},
             {"When referring to computer memory, what does that acronym RAM stand for?","Random Access Memory","Radical Alternative Memory","Regnus Agnus Mundi"},
-            {"What do the letters HTML, a markup language used to create web pages, stand for?","Hypertext Markup Language","+","*"},
-            {"With over 17 million units produced, what was the highest selling single model of personal computer ever?","The Commodore 64","Apple One","*"},
+            {"What do the letters HTML, a markup language used to create web pages, stand for?","HyperText Markup Language","High Textual Mashed Language","Hexa Translate Markup Language"},
+            {"With over 17 million units produced, what was the highest selling single model of personal computer ever?","The Commodore 64","Apple One","zx spectrum"},
             {"Who is credited with inventing the first mechanical computer?","Charles Babbage","Bill Gates","Steve Jobs"},
             {"1,024 Gigabytes is equal to one what?","Terabyte","Kilogram","Tirabyte"},
             {"In what year was the Nintendo 64 officially released?","1996","1994","1964"},
@@ -49,16 +49,7 @@ public class Questions implements KeyboardHandler{
             {"What is CIH also known as?","Chernobyl Virus","Common Interface Header","C++, a programming language"},
             {".JIF extension refers usually to what kind of file?","Image file","Audio file","Word Document file"}};
 
-    //TODO
-    //Não repetir perguntas.
-    //selecionar uma resposta.
 
-    /*private int c;
-
-    public Questions(){
-        this.c = 0;
-    }
-*/
     private boolean[] questionsAsked = new boolean[Q_AND_A.length];
     private boolean[] answersShowed = new boolean[4];
     private boolean rigthAnswer;

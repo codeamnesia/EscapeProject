@@ -21,7 +21,6 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
 
     private Doors door;
     private Questions question;
-    private int clickCounter;
     private boolean caughtAttention;
     private Rectangle scene;
 
@@ -69,11 +68,9 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
 
     public void run() {
 
-        clickCounter = 0;
         caughtAttention = false;
 
-
-
+        //Enter cycle of showing random pictures of Padawans
         while(true) {
 
             door.deletePadPictures();
@@ -96,11 +93,6 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
                 }
                 break;
             }
-
-            /*if (clickCounter >= MAX_NUMBER_OF_CLICKS) {
-                door.looseChance();
-                break;
-            }*/
 
         }
         try {

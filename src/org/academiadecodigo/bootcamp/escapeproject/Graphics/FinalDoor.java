@@ -47,16 +47,7 @@ public class FinalDoor implements MouseHandler, Scenable {
     private Text checkF3;
     private Text checkT3;
 
-
-    //Final Doors
-    private Picture fdoor1;
-    private Picture fdoor2;
-    private Picture fdoor3;
-    private Picture fdoor4;
-    private Picture fdoor5;
-    private Picture fdoor6;
-    private Picture fdoor7;
-
+    //Final door pictures
     private Picture[] fdoors;
 
     //boolean for checked string
@@ -127,9 +118,9 @@ public class FinalDoor implements MouseHandler, Scenable {
         mobileStr2 = "";
         mobileStr3 = "";
 
-        mobileStr1T = "00000000";
-        mobileStr2T = "00000000";
-        mobileStr3T = "00000000";
+        mobileStr1T = "01010010";
+        mobileStr2T = "01010101";
+        mobileStr3T = "01001001";
 
         mobileText1 = new Text(325, 230, mobileStr1);
         mobileText2 = new Text(325, 250, mobileStr2);
@@ -165,21 +156,10 @@ public class FinalDoor implements MouseHandler, Scenable {
         mobileText3.draw();
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
+    public void checkLines1inMobile(){
 
-        //TODO remove all of this for a method don't know how for sure
 
-        if (DoorsUtil.isWithin(e,smallMobile) ){
-           mobileActive = true;
-        }
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() < 8 && mobileActive) {
-            writeln1(0);
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() < 8 && mobileActive) {
-            writeln1(1);
-
-        }
         checkF1.delete();
         if (mobileStr1.length() == 8 && !checked1) {
             if (!mobileStr1.equals(mobileStr1T)) {
@@ -190,45 +170,82 @@ public class FinalDoor implements MouseHandler, Scenable {
             }
             checkT1.draw();
             checked1 = true;
-            return;
+
         }
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 && mobileActive) {
-            writeln2(0);
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() < 8 && mobileActive) {
-            writeln2(1);
-        }
+
+    }
+
+    public void checkLines2inMobile() {
+
         checkF2.delete();
         if (mobileStr2.length() == 8 && !checked2) {
             if (!mobileStr2.equals(mobileStr2T)) {
                 mobileStr2 = "";
-
                 checkF2.draw();
+
                 return;
             }
-            checkT2.draw();
             checked2 = true;
+            checkT2.draw();
             return;
         }
 
-        if (DoorsUtil.isWithin(e, mobile0) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8 && mobileActive) {
-            writeln3(0);
-        } else if (DoorsUtil.isWithin(e, mobile1) && mobileStr1.length() >= 8 && mobileStr2.length() >= 8 && mobileStr3.length() < 8 && mobileActive) {
-            writeln3(1);
-        }
+    }
+
+    public void checkLines3inMobile() {
+
         checkF3.delete();
         if (mobileStr3.length() == 8 && !checked3) {
             if (!mobileStr3.equals(mobileStr3T)) {
-                checked3 = true;
+                //checked3 = true;
                 mobileStr3 = "";
                 checkF3.draw();
                 System.out.println(openDoor);
                 return;
             }
             checkT3.draw();
+            mobile0.delete();
+            mobile1.delete();
             openDoor = true;
-
         }
+
+
+    }
+
+    //TODO replace this part with what's done in Francisco's PC
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+
+
+        if (DoorsUtil.isWithin(e,smallMobile) ){
+           mobileActive = true;
+        }
+
+        if(DoorsUtil.isWithin(e, mobile0) && mobileActive){
+            if (mobileStr1.length() < 8){
+                writeln1(0);
+            }else if(mobileStr2.length()<8){
+                writeln2(0);
+            }else {
+                writeln3(0);
+            }
+        }else if(DoorsUtil.isWithin(e, mobile1) && mobileActive){
+            if (mobileStr1.length() < 8){
+                writeln1(1);
+            }else if(mobileStr2.length()<8){
+                writeln2(1);
+            }else {
+                writeln3(1);
+            }
+        }
+
+        this.checkLines1inMobile();
+        this.checkLines2inMobile();
+        this.checkLines3inMobile();
+
+
         System.out.println(e);
     }
 
@@ -245,14 +262,6 @@ public class FinalDoor implements MouseHandler, Scenable {
         mobileText2.delete();
         mobileText3.delete();
 
-        fdoor1 = new Picture(430, 235, "resources/pics/fd1.png");
-        fdoor2 = new Picture(430, 235, "resources/pics/fd2.png");
-        fdoor3 = new Picture(430, 236, "resources/pics/fd3.png");
-        fdoor4 = new Picture(430, 228, "resources/pics/fd4.png");
-        fdoor5 = new Picture(430, 230, "resources/pics/fd5.png");
-        fdoor6 = new Picture(430, 230, "resources/pics/fd6.png");
-        fdoor7 = new Picture(430, 230, "resources/pics/fd7.png");
-
         fdoors = new Picture[7];
 
         fdoors[0] = new Picture(430, 235, "resources/pics/fd1.png");
@@ -267,20 +276,9 @@ public class FinalDoor implements MouseHandler, Scenable {
         bigMobille.delete();
         smallMobille.delete();
 
-        //TODO passar isto a array
-
         Thread.sleep(200);
 
         fdoors[0].draw();
-
-//        fdoor1.draw();
-//        fdoor7.delete();
-
-//        for (long i = 0; i <500000000 ; i++) {
-//            for (int j = 0; j < 500000000   ; j++) {
-//
-//            }
-//        }
 
         Thread.sleep(200);
 
@@ -295,39 +293,10 @@ public class FinalDoor implements MouseHandler, Scenable {
 
         fdoors[fdoors.length - 1].draw();
 
-//        fdoor2.draw();
-//        fdoor1.delete();
-//
-//        Thread.sleep(200);
-//
-//        fdoor3.draw();
-//        fdoor2.delete();
-//
-//        Thread.sleep(200);
-//
-//        fdoor4.draw();
-//        fdoor3.delete();
-//
-//        Thread.sleep(200);
-//
-//        fdoor5.draw();
-//        fdoor4.delete();
-//
-//        Thread.sleep(200);
-//
-//        fdoor6.draw();
-//        fdoor5.delete();
-//
-//        Thread.sleep(200);
-//
-//        fdoor7.draw();
-//        fdoor6.delete();
-//
-//        Thread.sleep(200);
-
         this.finished();
     }
 
+    //TODO Suavizar esta sequencia e melhorar imagem final
     //GOD'S appearence
     private void finished() {
 
@@ -339,17 +308,23 @@ public class FinalDoor implements MouseHandler, Scenable {
 
     }
 
-    //TODO passar como argumento a propr
 
-    //Writes on Mobile screen 1 line 1
 
+    //Writes on Mobile screen line 1
+    //TODO substiruir estes metodos pelos que estao no computador do Francisco
     private void writeln1(int binary) {
+
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         mobileStr1 += binary;
         mobileText1.setText(mobileStr1);
         mobileText1.draw();
     }
 
-    //Writes on Mobile screen 1 line 2
+    //Writes on Mobile screen line 2
     private void writeln2(int binary) {
         mobileStr2 += binary;
         mobileText2.setText(mobileStr2);
@@ -357,7 +332,7 @@ public class FinalDoor implements MouseHandler, Scenable {
     }
 
 
-    //Writes on Mobile screen 1 line 3
+    //Writes on Mobile screen line 3
     private void writeln3(int binary) {
         mobileStr3 += binary;
         mobileText3.setText(mobileStr3);

@@ -22,13 +22,7 @@ public class Doors {
 
     private Questions questions;
 
-    private Picture door1;
-    private Picture door2;
-    private Picture door3;
-    private Picture door4;
-    private Picture door5;
-    private Picture door6;
-    private Picture door7;
+    private Picture[] doorImages;
 
     private Text number1Joana;
     private Text number2Jorge;
@@ -89,14 +83,14 @@ public class Doors {
         picsPadawan[2][3] = new Picture(600.0, 225.0, "resources/pics/Rpointer.png");
 
         //Instance level doors
-
-        door1 = new Picture(315.0, 125.0, "resources/pics/d1.png");
-        door2 = new Picture(315.0, 125.0, "resources/pics/d2.png");
-        door3 = new Picture(315.0, 125.0, "resources/pics/d3.png");
-        door4 = new Picture(315.0, 125.0, "resources/pics/d4.png");
-        door5 = new Picture(315.0, 125.0, "resources/pics/d5.png");
-        door6 = new Picture(315.0, 125.0, "resources/pics/d6.png");
-        door7 = new Picture(315.0, 125.0, "resources/pics/d7.png");
+        doorImages = new Picture[7];
+        doorImages[0] = new Picture(315.0, 125.0, "resources/pics/d7.png");
+        doorImages[1] = new Picture(315.0, 125.0, "resources/pics/d6.png");
+        doorImages[2] = new Picture(315.0, 125.0, "resources/pics/d5.png");
+        doorImages[3] = new Picture(315.0, 125.0, "resources/pics/d4.png");
+        doorImages[4] = new Picture(315.0, 125.0, "resources/pics/d3.png");
+        doorImages[5] = new Picture(315.0, 125.0, "resources/pics/d2.png");
+        doorImages[6] = new Picture(315.0, 125.0, "resources/pics/d1.png");
 
         return;
 
@@ -109,45 +103,16 @@ public class Doors {
 
         makePadawansDisapear();
 
-        door7.draw();
-        door1.delete();
+        doorImages[0].draw();
 
         Thread.sleep(200);
 
-        door6.draw();
-        door7.delete();
+        for (int i = 0; i < doorImages.length - 1; i++) {
+            doorImages[i + 1].draw();
+            doorImages[i].delete();
 
-        Thread.sleep(200);
-
-        door5.draw();
-        door6.delete();
-
-
-
-        Thread.sleep(200);
-
-        door4.draw();
-        door5.delete();
-
-
-
-        Thread.sleep(200);
-
-        door3.draw();
-        door4.delete();
-
-
-        Thread.sleep(200);
-
-        door2.draw();
-        door3.delete();
-
-
-
-        Thread.sleep(200);
-
-        door1.draw();
-        door2.delete();
+            Thread.sleep(200);
+        }
 
 
         Thread.sleep(1000);
@@ -167,17 +132,18 @@ public class Doors {
             }
         }
         deletePadPictures();
+        deleteNumbers();
         Thread.sleep(30);
         return;
     }
 
-    public void looseChance() {
-        Text text = new Text(300, 200, "You lost your chance!!!");
-        text.grow(200.0, 20.0);
-        text.setColor(Color.MAGENTA);
-        text.draw();
-        return;
-    }
+//    public void looseChance() {
+//        Text text = new Text(300, 200, "You lost your chance!!!");
+//        text.grow(200.0, 20.0);
+//        text.setColor(Color.MAGENTA);
+//        text.draw();
+//        return;
+//    }
 
     public void deletePadPictures() {
         for (int i = 0; i < 3; i++) {
@@ -212,7 +178,7 @@ public class Doors {
     }
 
     public void deleteDoors(){
-        door1.delete();
+        doorImages[doorImages.length - 1].delete();
         return;
     }
 

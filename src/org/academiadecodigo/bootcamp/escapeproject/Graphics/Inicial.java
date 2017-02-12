@@ -3,7 +3,6 @@ package org.academiadecodigo.bootcamp.escapeproject.Graphics;
 import org.academiadecodigo.bootcamp.escapeproject.Scenable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
@@ -16,18 +15,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public class Inicial implements MouseHandler, Scenable {
 
-    private Picture inicial1;
-    private Picture inicial2;
-    private Picture inicial3;
-    private Picture inicial4;
-    private Picture inicial5;
-    private Picture inicial6;
-    private Picture inicial7;
-    private Picture inicial8;
-    private Picture inicial9;
+    private Picture[] inicialSeq;
+
     private Picture first;
 
-    private Rectangle start;
+    private Rectangle startRect;
     private boolean isStartPressed;
     private Rectangle sleepRect;
     private boolean isSleepRectPressed;
@@ -42,22 +34,24 @@ public class Inicial implements MouseHandler, Scenable {
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
         m.addEventListener(MouseEventType.MOUSE_MOVED);
 
-        inicial1 = new Picture(10, 10, "resources/pics/9.jpg");
-        inicial2 = new Picture(10, 10, "resources/pics/8.jpg");
-        inicial3 = new Picture(10, 10, "resources/pics/7.jpg");
-        inicial4 = new Picture(10, 10, "resources/pics/6.jpg");
-        inicial5 = new Picture(10, 10, "resources/pics/5.jpg");
-        inicial6 = new Picture(10, 10, "resources/pics/4.jpg");
-        inicial7 = new Picture(10, 10, "resources/pics/3.jpg");
-        inicial8 = new Picture(10, 10, "resources/pics/2.jpg");
-        inicial9 = new Picture(10, 10, "resources/pics/1.jpg");
+        inicialSeq = new Picture[9];
+
+        inicialSeq[0] = new Picture(10, 10, "resources/pics/9.jpg");
+        inicialSeq[1] = new Picture(10, 10, "resources/pics/8.jpg");
+        inicialSeq[2] = new Picture(10, 10, "resources/pics/7.jpg");
+        inicialSeq[3] = new Picture(10, 10, "resources/pics/6.jpg");
+        inicialSeq[4] = new Picture(10, 10, "resources/pics/5.jpg");
+        inicialSeq[5] = new Picture(10, 10, "resources/pics/4.jpg");
+        inicialSeq[6] = new Picture(10, 10, "resources/pics/3.jpg");
+        inicialSeq[7] = new Picture(10, 10, "resources/pics/2.jpg");
+        inicialSeq[8] = new Picture(10, 10, "resources/pics/1.jpg");
         first = new Picture(10, 10, "resources/pics/first.jpg");
-        start = new Rectangle(660, 205, 130, 100);
+        startRect = new Rectangle(660, 205, 130, 100);
         sleepRect = new Rectangle (680, 450, 130, 100);
 
         first.draw();
-        start.setColor(Color.YELLOW);
-        //start.draw();
+        startRect.setColor(Color.YELLOW);
+        //startRect.draw();
 
         sleepRect.setColor(Color.YELLOW);
         //sleepRect.draw();
@@ -93,65 +87,24 @@ public class Inicial implements MouseHandler, Scenable {
 
     private void start() throws InterruptedException {
 
-        inicial1.draw();
+        inicialSeq[0].draw();
 
 
         Thread.sleep(1500);
 
-        inicial1.delete();
-        inicial2.draw();
+        for (int i = 0; i < inicialSeq.length - 1; i++) {
+            inicialSeq[i].delete();
+            inicialSeq[i + 1].draw();
 
-
-        Thread.sleep(800);
-
-        inicial2.delete();
-        inicial3.draw();
-
-
-        Thread.sleep(800);
-
-        inicial3.delete();
-        inicial4.draw();
-
-
-        Thread.sleep(800);
-
-        inicial4.delete();
-        inicial5.draw();
-
-
-        Thread.sleep(800);
-
-        inicial5.delete();
-        inicial6.draw();
-
-
-        Thread.sleep(800);
-
-        inicial6.delete();
-        inicial7.draw();
-
-
-        Thread.sleep(800);
-
-        inicial7.delete();
-        inicial8.draw();
-
-
-        Thread.sleep(800);
-
-        inicial8.delete();
-        inicial9.draw();
-
-        Thread.sleep(800);
-
+            Thread.sleep(800);
+        }
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (DoorsUtil.isWithin(e, start)) {
+        if (DoorsUtil.isWithin(e, startRect)) {
             System.out.println(e);
             isStartPressed = true;
         }
