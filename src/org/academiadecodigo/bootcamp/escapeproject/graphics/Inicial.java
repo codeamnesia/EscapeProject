@@ -63,8 +63,6 @@ public class Inicial implements MouseHandler, Scenable {
 
     }
 
-    //TODO por ZZZZZZZ a funcionar no Blumel
-
     private void enterCycle() throws InterruptedException {
         while (true) {
             Thread.sleep(20);

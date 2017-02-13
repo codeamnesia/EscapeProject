@@ -1,6 +1,4 @@
 package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
-
-import com.sun.xml.internal.bind.v2.TODO;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
