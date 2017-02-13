@@ -176,8 +176,8 @@ public class Grelha {
         //10 doors
         //VERTICAL DOORS
         Rectangle EXIT = new Rectangle(PADDING + 25, 100 + PADDING, 25, 100);   //The exit door
-        EXIT.setColor(Color.BLUE);
-        EXIT.draw();
+//        EXIT.setColor(Color.BLUE);
+//        EXIT.draw();
         //group 1, the left
         Rectangle V1D1 = new Rectangle(275 + PADDING, PADDING + 100, 50, 100);
         Rectangle V1D2 = new Rectangle(275 + PADDING, PADDING + 400, 50, 100);
@@ -198,14 +198,14 @@ public class Grelha {
 
         //The computer where the image will appear
         Rectangle COMPUTER = new Rectangle(500 + PADDING, PADDING + 50, 50, 50);
-        COMPUTER.setColor(Color.YELLOW);
-        COMPUTER.draw();
+//        COMPUTER.setColor(Color.YELLOW);
+//        COMPUTER.draw();
 
         Rectangle[] doorsrec = {EXIT, V1D1, V1D2, V1D3, V2D2, V2D3, JOKE, H1D2, H1D3, H2D2, COMPUTER};
         doorsRectangles = doorsrec;
         for (int i = 0; i < doorsrec.length; i++) {
-            doorsrec[i].setColor(Color.BLUE);
-            doorsrec[i].fill();
+//            doorsrec[i].setColor(Color.BLUE);
+//            doorsrec[i].fill();
             doors[i] = new GridDoor(doorsrec[i]);
         }
 
@@ -260,8 +260,8 @@ public class Grelha {
 
         for (int i = 0; i < wallRec.length; i++) {
 
-            wallRec[i].setColor(Color.LIGHT_GRAY);
-            wallRec[i].fill();
+//            wallRec[i].setColor(Color.LIGHT_GRAY);
+//            wallRec[i].fill();
             walls[i] = new Wall(wallRec[i]);
 
         }

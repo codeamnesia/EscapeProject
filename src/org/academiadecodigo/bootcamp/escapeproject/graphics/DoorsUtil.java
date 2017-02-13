@@ -22,7 +22,7 @@ public class DoorsUtil {
     }
 
     public static boolean isSomeOnePayingAttention() {
-        return Math.random() < 0.10;
+        return Math.random() < 0.20;
     }
 
     public static boolean isWithin(MouseEvent e, Picture p) {

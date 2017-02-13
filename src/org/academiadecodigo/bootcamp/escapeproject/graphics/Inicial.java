@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.escapeproject.Scenable;
 import org.academiadecodigo.bootcamp.escapeproject.gameObjects.Grelha;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
@@ -24,6 +25,7 @@ public class Inicial implements MouseHandler, Scenable {
     private boolean isStartPressed;
     private Rectangle sleepRect;
     private boolean isSleepRectPressed;
+    private Text zzzztext;
 
     private DoorsGameLoop doorsGameLoop;
 
@@ -68,6 +70,7 @@ public class Inicial implements MouseHandler, Scenable {
             Thread.sleep(20);
             if (isStartPressed) {
                 this.start();
+                zzzztext.delete();
                 return;
             }
             if (isSleepRectPressed) {
@@ -78,8 +81,10 @@ public class Inicial implements MouseHandler, Scenable {
     }
 
     private void initDoorLoopTester() throws InterruptedException {
-        //doorsGameLoop = new DoorsGameLoop();
-        //doorsGameLoop.prompt();
+        zzzztext = new Text(300,100,"!!zzzzz I WANNA BE #accepted @ <_A/C_> zzzz!" );
+        zzzztext.setColor(Color.WHITE);
+        zzzztext.grow(250,20);
+        zzzztext.draw();
         isSleepRectPressed = false;
         enterCycle();
         return;
@@ -97,7 +102,7 @@ public class Inicial implements MouseHandler, Scenable {
             inicialSeq[i].delete();
             inicialSeq[i + 1].draw();
 
-            Thread.sleep(800);
+            Thread.sleep(500);
         }
 
         Grelha mygrid = new Grelha();
