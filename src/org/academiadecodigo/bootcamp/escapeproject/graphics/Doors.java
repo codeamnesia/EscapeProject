@@ -40,50 +40,53 @@ public class Doors {
         questions = new Questions();
 
         //Creates Background picture for questions levels
-        background = new Picture(60.0, 60.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fundo.jpg");
-        background.draw();
+
+        background = new Picture(60.0, 60.0, "resources/pics/fundo.jpg");
+        //background.draw();
+
+        System.out.println("EEE");
 
         number1Joana = new Text(200.0, 180.0, "1");
         number1Joana.setColor(Color.WHITE);
         number1Joana.grow(10.0,10.0);
-        number1Joana.draw();
+        //number1Joana.draw();
 
         number2Jorge = new Text(440.0, 180.0, "2");
         number2Jorge.setColor(Color.WHITE);
         number2Jorge.grow(10.0,10.0);
-        number2Jorge.draw();
+        //number2Jorge.draw();
 
         number3Rodolfo = new Text(640.0, 180.0, "3");
         number3Rodolfo.setColor(Color.WHITE);
         number3Rodolfo.grow(10.0,10.0);
-        number3Rodolfo.draw();
+        //number3Rodolfo.draw();
 
         picsPadawan = new Picture[3][4];
 
-        picsPadawan[0][0] = new Picture(160.0, 250.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/j1.png");
-        picsPadawan[0][1] = new Picture(160.0, 250.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/j2.png");
-        picsPadawan[0][2] = new Picture(160.0, 250.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/j4.png");
-        picsPadawan[0][3] = new Picture(160.0, 250.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/jpointer.png");
+        picsPadawan[0][0] = new Picture(160.0, 250.0, "resources/pics/j1.png");
+        picsPadawan[0][1] = new Picture(160.0, 250.0, "resources/pics/j2.png");
+        picsPadawan[0][2] = new Picture(160.0, 250.0, "resources/pics/j4.png");
+        picsPadawan[0][3] = new Picture(160.0, 250.0, "resources/pics/jpointer.png");
 
-        picsPadawan[1][0] = new Picture(400.0, 215.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/jo1.png");
-        picsPadawan[1][1] = new Picture(400.0, 215.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/jo2.png");
-        picsPadawan[1][2] = new Picture(400.0, 215.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/jo3.png");
-        picsPadawan[1][3] = new Picture(400.0, 215.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/jopointer.png");
+        picsPadawan[1][0] = new Picture(400.0, 215.0, "resources/pics/jo1.png");
+        picsPadawan[1][1] = new Picture(400.0, 215.0, "resources/pics/jo2.png");
+        picsPadawan[1][2] = new Picture(400.0, 215.0, "resources/pics/jo3.png");
+        picsPadawan[1][3] = new Picture(400.0, 215.0, "resources/pics/jopointer.png");
 
-        picsPadawan[2][0] = new Picture(600.0, 225.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/r1.png");
-        picsPadawan[2][1] = new Picture(600.0, 225.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/r3.png");
-        picsPadawan[2][2] = new Picture(600.0, 225.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/r4.png");
-        picsPadawan[2][3] = new Picture(600.0, 225.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/Rpointer.png");
+        picsPadawan[2][0] = new Picture(600.0, 225.0, "resources/pics/r1.png");
+        picsPadawan[2][1] = new Picture(600.0, 225.0, "resources/pics/r3.png");
+        picsPadawan[2][2] = new Picture(600.0, 225.0, "resources/pics/r4.png");
+        picsPadawan[2][3] = new Picture(600.0, 225.0, "resources/pics/Rpointer.png");
 
         //Instance level doors
         doorImages = new Picture[7];
-        doorImages[0] = new Picture(315.0, 125.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/d7.png");
-        doorImages[1] = new Picture(315.0, 125.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/d6.png");
-        doorImages[2] = new Picture(315.0, 125.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/d5.png");
-        doorImages[3] = new Picture(315.0, 125.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/d4.png");
-        doorImages[4] = new Picture(315.0, 125.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/d3.png");
-        doorImages[5] = new Picture(315.0, 125.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/d2.png");
-        doorImages[6] = new Picture(315.0, 125.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/d1.png");
+        doorImages[0] = new Picture(315.0, 125.0, "resources/pics/d7.png");
+        doorImages[1] = new Picture(315.0, 125.0, "resources/pics/d6.png");
+        doorImages[2] = new Picture(315.0, 125.0, "resources/pics/d5.png");
+        doorImages[3] = new Picture(315.0, 125.0, "resources/pics/d4.png");
+        doorImages[4] = new Picture(315.0, 125.0, "resources/pics/d3.png");
+        doorImages[5] = new Picture(315.0, 125.0, "resources/pics/d2.png");
+        doorImages[6] = new Picture(315.0, 125.0, "resources/pics/d1.png");
 
         return;
 
@@ -190,5 +193,17 @@ public class Doors {
 
     public Picture getBackground() {
         return background;
+    }
+
+    public Text getNumber1Joana() {
+        return number1Joana;
+    }
+
+    public Text getNumber2Jorge() {
+        return number2Jorge;
+    }
+
+    public Text getNumber3Rodolfo() {
+        return number3Rodolfo;
     }
 }

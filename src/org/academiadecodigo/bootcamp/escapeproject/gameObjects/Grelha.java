@@ -3,14 +3,12 @@ package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
 //import org.academiadecodigo.bootcamp.escapeproject.CollisionDetector;
 
 import org.academiadecodigo.bootcamp.escapeproject.graphics.ComputerPhoto;
-import org.academiadecodigo.bootcamp.escapeproject.graphics.Doors;
+import org.academiadecodigo.bootcamp.escapeproject.graphics.DoorsGameLoop;
 import org.academiadecodigo.bootcamp.escapeproject.position.Direction;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import javax.management.Query;
 
 /**
  * Created by codecadet on 12/02/17.
@@ -31,6 +29,10 @@ public class Grelha {
     private int mov = 10;                                  //number of pixels the sprite moves each time.
     private KeyboardInput keyboardInput;
     private Rectangle[] doorsRectangles;
+    private DoorsGameLoop doorsGameLoop;
+
+
+    Thread testing;
 
 
     /**
@@ -51,10 +53,11 @@ public class Grelha {
      */
 
 
-    public Grelha() {
+    public Grelha() throws InterruptedException {
 
         collider = new Collider();
-        keyboardInput = new KeyboardInput(this);
+        keyboardInput = new KeyboardInput(this, doorsGameLoop);
+
         //keyboardInput.setSprite(sprite);
     }
 
@@ -91,6 +94,12 @@ public class Grelha {
         setRoomPic();
         rooms[8].setHidden(false);
         rooms[8].printCurrentPic();
+
+        try {
+            testing = new Thread(new DoorsGameLoop(keyboardInput, this));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         //todo: sprite pictures spritePictures = {the 4 pictures};
@@ -299,46 +308,82 @@ public class Grelha {
         }
 
         //Checks the movement
-        switch (direction)
-
-        {
+        switch (direction) {
             case UP:
-                sprite.getShape().translate(0, -mov);
-                sprite.getCurrentSprite().translate(0, -mov);
-                sprite.getCurrentSprite().delete();
-                sprite.getCurrentSprite().draw();
-
+                if(sceneOff) {
+                    sprite.getShape().translate(0, -mov);
+                    sprite.getCurrentSprite().translate(0, -mov);
+                }
                 break;
             case DOWN:
-                sprite.getShape().translate(0, mov);
-                sprite.getCurrentSprite().translate(0, mov);
-                sprite.getCurrentSprite().delete();
-                sprite.getCurrentSprite().draw();
+                if(sceneOff) {
+                    sprite.getShape().translate(0, mov);
+                    sprite.getCurrentSprite().translate(0, mov);
+                }
                 break;
             case LEFT:
-                sprite.getShape().translate(-mov, 0);
-                sprite.getCurrentSprite().translate(-mov, 0);
-                sprite.getCurrentSprite().delete();
-                sprite.getCurrentSprite().draw();
+                if(sceneOff) {
+                    sprite.getShape().translate(-mov, 0);
+                    sprite.getCurrentSprite().translate(-mov, 0);
+                }
                 break;
             case RIGHT:
-                sprite.getShape().translate(mov, 0);
-                sprite.getCurrentSprite().translate(mov, 0);
-                sprite.getCurrentSprite().delete();
-                sprite.getCurrentSprite().draw();
+                if(sceneOff) {
+                    sprite.getShape().translate(mov, 0);
+                    sprite.getCurrentSprite().translate(mov, 0);
+                }
                 break;
-        }
 
+        }
     }
 
 
     public boolean isItTimeToPrompt(Direction direction) {
-        for (GridDoor hitdoor : doors) {
-            if (collider.intersects(hitdoor.getHitBoxPrompt(), sprite.getShape())) {
+        for(GridDoor hitdoor: doors){
+            if(collider.intersects(hitdoor.getHitBoxPrompt(), sprite.getShape())) {
+                 {
+                    System.out.println("Aqui");
+                    System.out.println(Thread.currentThread());
+
+                     if (!testing.isAlive()){
+
+                         testing.start();
+                     }
+                    //doorsGameLoop = new DoorsGameLoop();
+                }/* catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
+               // doorsGameLoop.run();
+                //TODO todas as portas abrem o mesmo objecto de DoorsGameLoop
                 return true;
             }
+            //TODO fazer varias condicoes para cada sitio onde é para fazer prompt
+
+
         }
         return false;
     }
+
+
+
+
+    //method that checks if sprite collides with elements
+
+
+
+//    public void colideDoors(){
+//
+//        if(){
+//
+//
+//            if(intersectsDoor
+//        }
+//
+//
+//
+//
+//
+//    }
+
 
 }

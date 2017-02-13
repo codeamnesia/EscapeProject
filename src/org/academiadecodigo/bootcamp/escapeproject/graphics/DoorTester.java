@@ -23,11 +23,11 @@ public class DoorTester {
 //
 //        f.prompt();
 
-        Grelha grelha = new Grelha();
-        grelha.init();
-
         //TODO turn Gridodoors locked into true when tests finish
 
+
+        Grelha g = new Grelha();
+        g.init();
     }
 
 }

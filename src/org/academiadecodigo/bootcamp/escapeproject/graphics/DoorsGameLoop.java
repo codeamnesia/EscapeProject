@@ -1,6 +1,8 @@
 package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
 import org.academiadecodigo.bootcamp.escapeproject.Scenable;
+import org.academiadecodigo.bootcamp.escapeproject.gameObjects.Grelha;
+import org.academiadecodigo.bootcamp.escapeproject.gameObjects.KeyboardInput;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -11,23 +13,26 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 /**
  * Created by codecadet on 10/02/17.
  */
-public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
+public class DoorsGameLoop implements  Runnable, Scenable {
 
     private Doors door;
     private Questions question;
     private boolean caughtAttention;
     private Rectangle scene;
+    private Grelha grelha;
 
-    public DoorsGameLoop() throws InterruptedException {
+    public DoorsGameLoop(KeyboardInput keyboardInput, Grelha grelha) throws InterruptedException {
         door = new Doors();
         question = new Questions();
+        this.grelha = grelha;
 
 //        Mouse m = new Mouse(this);
 //        m.addEventListener(MouseEventType.MOUSE_CLICKED);
 //        m.addEventListener(MouseEventType.MOUSE_MOVED);
 
-        Keyboard k = new Keyboard(this);
-        KeyboardEvent event = new KeyboardEvent();
+        KeyboardInput k = keyboardInput;
+        keyboardInput.setDoorsGameLoop(this);
+       /* KeyboardEvent event = new KeyboardEvent();
         event.setKey(KeyboardEvent.KEY_1);
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event);
@@ -40,7 +45,7 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
         KeyboardEvent event2 = new KeyboardEvent();
         event2.setKey(KeyboardEvent.KEY_3);
         event2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        k.addEventListener(event2);
+        k.addEventListener(event2);*/
 
     }
 
@@ -60,12 +65,25 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
         run();
     }
 
+    @Override
     public void run() {
+
+        grelha.setSceneOff(false);
+
+        System.out.println(Thread.currentThread());
+
+        System.out.println("Aqui!!");
+
+        door.getBackground().draw();
+        door.getNumber1Joana().draw();
+        door.getNumber2Jorge().draw();
+        door.getNumber3Rodolfo().draw();
 
         caughtAttention = false;
 
         //Enter cycle of showing random pictures of Padawans
         while(true) {
+
 
             door.deletePadPictures();
 
@@ -88,10 +106,13 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
                 break;
             }
 
+
+
         }
         try {
             Thread.sleep(300);
         } catch (Exception e) {
+            System.out.println("Error");
             e.printStackTrace();
         }
 
@@ -103,6 +124,7 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
 
 
     public void closePrompt() {
+        grelha.setSceneOff(true);
         door.deleteDoors();
         door.getBackground().delete();
         door.deleteNumbers();
@@ -133,6 +155,7 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
         System.out.println(e);
 
     }*/
+/*
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
@@ -173,9 +196,24 @@ public class DoorsGameLoop implements KeyboardHandler, Runnable, Scenable {
 
         }
     }
-
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
     }
+*/
+
+
+    public Doors getDoor() {
+        return door;
+    }
+
+    public boolean isCaughtAttention() {
+        return caughtAttention;
+    }
+
+    public void setCaughtAttention(boolean caughtAttention) {
+        this.caughtAttention = caughtAttention;
+    }
+
+
 }
