@@ -16,6 +16,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public class Grelha {
 
+    public static int QUESTIONCOUNTER = 0;
 
     private Rectangle theMap;       //the bigger rectangle
     private static int PADDING = 10;
@@ -31,6 +32,7 @@ public class Grelha {
     private KeyboardInput keyboardInput;
     private Rectangle[] doorsRectangles;
     private DoorsGameLoop doorsGameLoop;
+
 
 
     Thread testing;
@@ -399,7 +401,7 @@ public class Grelha {
 
         }
 
-        if (collider.intersects(doorsRectangles[0], sprite.getShape()) && stepCount >= 5) {
+        if (collider.intersects(doorsRectangles[0], sprite.getShape()) && stepCount >= 5 && QUESTIONCOUNTER>=6) {
 
             {
                 System.out.println("Aqui");

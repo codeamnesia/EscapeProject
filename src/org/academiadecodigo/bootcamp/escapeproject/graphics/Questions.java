@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.escapeproject.graphics;
 
+import org.academiadecodigo.bootcamp.escapeproject.gameObjects.Grelha;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -78,6 +79,7 @@ public class Questions implements KeyboardHandler{
             Thread.sleep(300);
             if (rigthAnswer){
                 doors.openDoor();
+                Grelha.QUESTIONCOUNTER++;
                 break;
             }
             if (wrongAnswer){
