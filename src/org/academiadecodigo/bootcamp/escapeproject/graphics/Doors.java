@@ -89,9 +89,6 @@ public class Doors {
 
     }
 
-
-
-
     public void openDoor() throws InterruptedException {
 
         makePadawansDisapear();
@@ -129,14 +126,6 @@ public class Doors {
         Thread.sleep(30);
         return;
     }
-
-//    public void looseChance() {
-//        Text text = new Text(300, 200, "You lost your chance!!!");
-//        text.grow(200.0, 20.0);
-//        text.setColor(Color.MAGENTA);
-//        text.draw();
-//        return;
-//    }
 
     public void deletePadPictures() {
         for (int i = 0; i < 3; i++) {

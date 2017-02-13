@@ -3,11 +3,14 @@ package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
 //import org.academiadecodigo.bootcamp.escapeproject.CollisionDetector;
 
 import org.academiadecodigo.bootcamp.escapeproject.graphics.ComputerPhoto;
+import org.academiadecodigo.bootcamp.escapeproject.graphics.Doors;
 import org.academiadecodigo.bootcamp.escapeproject.position.Direction;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import javax.management.Query;
 
 /**
  * Created by codecadet on 12/02/17.
@@ -27,23 +30,24 @@ public class Grelha {
     private boolean[] inRoom = new boolean[9];             //When true, the room will stop being dark permanently;
     private int mov = 10;                                  //number of pixels the sprite moves each time.
     private KeyboardInput keyboardInput;
+    private Rectangle[] doorsRectangles;
 
 
     /**
-     *     0      300     600     900
-     *  0 -|-------|-------|-------|-
-     *    _|_     _|_      |       |
-     *    _E_     ___      |       |
-     *     |       |       |       |
-     *300 -|--|J|--|--| |--|--| |--|-
-     *     |      _|_     _|_      |
-     *     |      ___     ___      |
-     *     |       |       |       |
-     *600 -|-------|--| |--|-------|-
-     *     |      _|_     _|_      |
-     *     |      ___     ___      |
-     *     |       |       |       |
-     *900 -|-------|-------|-------|-
+     * 0      300     600     900
+     * 0 -|-------|-------|-------|-
+     * _|_     _|_      |       |
+     * _E_     ___      |       |
+     * |       |       |       |
+     * 300 -|--|J|--|--| |--|--| |--|-
+     * |      _|_     _|_      |
+     * |      ___     ___      |
+     * |       |       |       |
+     * 600 -|-------|--| |--|-------|-
+     * |      _|_     _|_      |
+     * |      ___     ___      |
+     * |       |       |       |
+     * 900 -|-------|-------|-------|-
      */
 
 
@@ -181,10 +185,10 @@ public class Grelha {
             doorsrec[i].setColor(Color.BLUE);
             doorsrec[i].fill();
             doors[i] = new GridDoor(doorsrec[i]);
+            doorsRectangles = doorsrec;
         }
 
     }
-
 
     //auxiliary method to put all the walls into its array
     private void defineWalls() {
@@ -245,7 +249,7 @@ public class Grelha {
     //checks all the moves to see if sprite collides with anything that need to changed or invoqque methods
     public void move(Direction direction) {
 
-
+        //checks if sprite is near walls and stops him to go in that direction
         if (collider.intersectsWall(walls, sprite.getShape(), direction, mov)) {
             return;
         }
@@ -262,6 +266,7 @@ public class Grelha {
             return;
         }
 
+        //if sprite is near the doors, doesn't let him pass
         for (int i = 0; i < doors.length; i++) {
 
             if (collider.intersects(doors[i].getRoomDoor(), sprite.getShape(), direction, mov) &&
@@ -270,18 +275,30 @@ public class Grelha {
             }
         }
 
-        for (
-                int i = 0;
-                i < rooms.length; i++)
+        //if sprite is near the doors, and prompts questions
 
-        {
+//        for (int i = 0; i < doorsRectangles.length; i++) {
+//
+//            if (collider.intersects(doorsRectangles[i], sprite.getShape(), direction, mov)) {
+//                try {
+//                    Doors a = new Doors();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                return;
+//            }
+
+
+        //cheks if sprite is in the rooms, and unblocks it
+        for (int i = 0; i < rooms.length; i++) {
             if (collider.intersects(rooms[i].getRoomPosition(), sprite.getShape(), direction, mov)) {
                 rooms[i].printCurrentPic();
 
             }
         }
 
-
+        //Checks the movement
         switch (direction)
 
         {
@@ -313,6 +330,7 @@ public class Grelha {
         }
 
     }
+
 
     public boolean isItTimeToPrompt(Direction direction) {
         for (GridDoor hitdoor : doors) {
