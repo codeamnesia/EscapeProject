@@ -4,6 +4,7 @@ package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
 
 import org.academiadecodigo.bootcamp.escapeproject.graphics.ComputerPhoto;
 import org.academiadecodigo.bootcamp.escapeproject.graphics.DoorsGameLoop;
+import org.academiadecodigo.bootcamp.escapeproject.graphics.FinalDoor;
 import org.academiadecodigo.bootcamp.escapeproject.position.Direction;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -33,6 +34,9 @@ public class Grelha {
 
 
     Thread testing;
+    Thread finalDoorPrompt;
+    boolean threadAlive = true;
+    private int stepCount = 0;
 
 
     /**
@@ -101,6 +105,10 @@ public class Grelha {
             e.printStackTrace();
         }
 
+        finalDoorPrompt = new Thread(new FinalDoor());
+
+
+
 
         //todo: sprite pictures spritePictures = {the 4 pictures};
         sprite = new Sprite();
@@ -165,7 +173,9 @@ public class Grelha {
     private void defineDoors() {
         //10 doors
         //VERTICAL DOORS
-        Rectangle EXIT = new Rectangle(PADDING, 100 + PADDING, 25, 100);   //The exit door
+        Rectangle EXIT = new Rectangle(PADDING + 25, 100 + PADDING, 25, 100);   //The exit door
+        EXIT.setColor(Color.BLUE);
+        EXIT.draw();
         //group 1, the left
         Rectangle V1D1 = new Rectangle(275 + PADDING, PADDING + 100, 50, 100);
         Rectangle V1D2 = new Rectangle(275 + PADDING, PADDING + 400, 50, 100);
@@ -190,11 +200,11 @@ public class Grelha {
         COMPUTER.draw();
 
         Rectangle[] doorsrec = {EXIT, V1D1, V1D2, V1D3, V2D2, V2D3, JOKE, H1D2, H1D3, H2D2, COMPUTER};
+        doorsRectangles = doorsrec;
         for (int i = 0; i < doorsrec.length; i++) {
             doorsrec[i].setColor(Color.BLUE);
             doorsrec[i].fill();
             doors[i] = new GridDoor(doorsrec[i]);
-            doorsRectangles = doorsrec;
         }
 
     }
@@ -258,6 +268,10 @@ public class Grelha {
     //checks all the moves to see if sprite collides with anything that need to changed or invoqque methods
     public void move(Direction direction) {
 
+        if (stepCount > 5) {
+            threadAlive = true;
+        }
+
         //checks if sprite is near walls and stops him to go in that direction
         if (collider.intersectsWall(walls, sprite.getShape(), direction, mov)) {
             return;
@@ -300,6 +314,7 @@ public class Grelha {
 
 
         //cheks if sprite is in the rooms, and unblocks it
+
         for (int i = 0; i < rooms.length; i++) {
             if (collider.intersects(rooms[i].getRoomPosition(), sprite.getShape(), direction, mov)) {
                 rooms[i].printCurrentPic();
@@ -310,50 +325,72 @@ public class Grelha {
         //Checks the movement
         switch (direction) {
             case UP:
-                if(sceneOff) {
+                if (sceneOff) {
+                    stepCount++;
                     sprite.getShape().translate(0, -mov);
                     sprite.getCurrentSprite().translate(0, -mov);
+                    sprite.getCurrentSprite().delete();
+                    sprite.getCurrentSprite().draw();
                 }
                 break;
             case DOWN:
-                if(sceneOff) {
+                if (sceneOff) {
+                    stepCount++;
                     sprite.getShape().translate(0, mov);
                     sprite.getCurrentSprite().translate(0, mov);
+                    sprite.getCurrentSprite().delete();
+                    sprite.getCurrentSprite().draw();
                 }
                 break;
             case LEFT:
-                if(sceneOff) {
+                if (sceneOff) {
+                    stepCount++;
                     sprite.getShape().translate(-mov, 0);
                     sprite.getCurrentSprite().translate(-mov, 0);
+                    sprite.getCurrentSprite().delete();
+                    sprite.getCurrentSprite().draw();
                 }
                 break;
             case RIGHT:
-                if(sceneOff) {
+                if (sceneOff) {
+                    stepCount++;
                     sprite.getShape().translate(mov, 0);
                     sprite.getCurrentSprite().translate(mov, 0);
+                    sprite.getCurrentSprite().delete();
+                    sprite.getCurrentSprite().draw();
                 }
                 break;
 
         }
     }
 
-
     public boolean isItTimeToPrompt(Direction direction) {
-        for(GridDoor hitdoor: doors){
-            if(collider.intersects(hitdoor.getHitBoxPrompt(), sprite.getShape())) {
-                 {
+
+
+        for (int i = 1; i < doorsRectangles.length; i++) {
+            if (collider.intersects(doorsRectangles[i], sprite.getShape()) && stepCount >= 5) {
+                {
                     System.out.println("Aqui");
                     System.out.println(Thread.currentThread());
+                    stepCount = 0;
+                    if (threadAlive) {
+                        try {
+                            testing = new Thread(new DoorsGameLoop(keyboardInput, this));
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        threadAlive = false;
 
-                     if (!testing.isAlive()){
+                    }
 
-                         testing.start();
-                     }
+                    testing.start();
+
+
                     //doorsGameLoop = new DoorsGameLoop();
                 }/* catch (InterruptedException e) {
                     e.printStackTrace();
                 }*/
-               // doorsGameLoop.run();
+                // doorsGameLoop.run();
                 //TODO todas as portas abrem o mesmo objecto de DoorsGameLoop
                 return true;
             }
@@ -361,14 +398,67 @@ public class Grelha {
 
 
         }
+
+        if (collider.intersects(doorsRectangles[0], sprite.getShape()) && stepCount >= 5) {
+
+            {
+                System.out.println("Aqui");
+                System.out.println(Thread.currentThread());
+                stepCount = 0;
+                if (threadAlive) {
+                    finalDoorPrompt = new Thread(new FinalDoor());
+                    threadAlive = false;
+
+                }
+
+                finalDoorPrompt.start();
+
+
+                //doorsGameLoop = new DoorsGameLoop();
+            }/* catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
+            // doorsGameLoop.run();
+            //TODO todas as portas abrem o mesmo objecto de DoorsGameLoop
+            return true;
+        }
+        //TODO fazer varias condicoes para cada sitio onde é para fazer prompt
+
+
         return false;
     }
 
 
+    //TODO: EURICO WORK
+
+//    public boolean isItTimeToPrompt(Direction direction) {
+//        for(GridDoor hitdoor: doors){
+//            if(collider.intersects(hitdoor.getHitBoxPrompt(), sprite.getShape())) {
+//                 {
+//                    System.out.println("Aqui");
+//                    System.out.println(Thread.currentThread());
+//
+//                     if (!testing.isAlive()){
+//
+//                         testing.start();
+//                     }
+//                    //doorsGameLoop = new DoorsGameLoop();
+//                }/* catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }*/
+//               // doorsGameLoop.run();
+//                //TODO todas as portas abrem o mesmo objecto de DoorsGameLoop
+//                return true;
+//            }
+//            //TODO fazer varias condicoes para cada sitio onde é para fazer prompt
+//
+//
+//        }
+//        return false;
+//    }
 
 
     //method that checks if sprite collides with elements
-
 
 
 //    public void colideDoors(){

@@ -12,7 +12,7 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-public class FinalDoor implements MouseHandler, Scenable {
+public class FinalDoor implements MouseHandler, Scenable, Runnable {
 
     private Rectangle scene;
     private Rectangle mobile0;
@@ -75,6 +75,15 @@ public class FinalDoor implements MouseHandler, Scenable {
         checked1 = false;
         checked2 = false;
         checked3 = false;
+    }
+
+    @Override
+    public void run() {
+        try {
+            prompt();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -266,13 +275,13 @@ public class FinalDoor implements MouseHandler, Scenable {
 
         fdoors = new Picture[7];
 
-        fdoors[0] = new Picture(430, 235, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd1.png");
-        fdoors[1] = new Picture(430, 235, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd2.png");
-        fdoors[2] = new Picture(430, 236, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd3.png");
-        fdoors[3] = new Picture(430, 228, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd4.png");
-        fdoors[4] = new Picture(430, 230, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd5.png");
-        fdoors[5] = new Picture(430, 230, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd6.png");
-        fdoors[6] = new Picture(430, 230, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/fd7.png");
+        fdoors[0] = new Picture(430, 235, "resources/pics/fd1.png");
+        fdoors[1] = new Picture(430, 235, "resources/pics/fd2.png");
+        fdoors[2] = new Picture(430, 236, "resources/pics/fd3.png");
+        fdoors[3] = new Picture(430, 228, "resources/pics/fd4.png");
+        fdoors[4] = new Picture(430, 230, "resources/pics/fd5.png");
+        fdoors[5] = new Picture(430, 230, "resources/pics/fd6.png");
+        fdoors[6] = new Picture(430, 230, "resources/pics/fd7.png");
 
 
         bigMobille.delete();
