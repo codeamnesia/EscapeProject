@@ -85,7 +85,7 @@ public void start(){
             case KeyboardEvent.KEY_LEFT:
                 grid.move(Direction.LEFT);
                 if(grid.isItTimeToPrompt(Direction.LEFT)) {
-                    System.out.println("Prompt here");
+                    //System.out.println("Prompt here");
                     //arrancar aqui o prompt.
                 }
                 break;

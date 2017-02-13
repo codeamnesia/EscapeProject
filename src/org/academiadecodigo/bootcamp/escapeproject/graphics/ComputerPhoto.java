@@ -12,12 +12,13 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public class ComputerPhoto implements Scenable, MouseHandler {
 
+    //Class to only prompt photo of computer screen with ascii int
     private Picture computer;
 
 
     @Override
     public void prompt() throws InterruptedException {
-        computer = new Picture(60, 60, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/computer.jpg");
+        computer = new Picture(60, 60, "/Users/codecadet/develop/rep/escapeproject/resources/pics/computer.jpg");
         computer.draw();
 
         Mouse m = new Mouse(this);

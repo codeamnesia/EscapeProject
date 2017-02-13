@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
 
 //import org.academiadecodigo.bootcamp.escapeproject.CollisionDetector;
 
+import org.academiadecodigo.bootcamp.escapeproject.graphics.ComputerPhoto;
 import org.academiadecodigo.bootcamp.escapeproject.position.Direction;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -29,20 +30,20 @@ public class Grelha {
 
 
     /**
-     * 0      300     600     900
-     * 0 -|-------|-------|-------|-
-     * _|_     _|_      |       |
-     * _E_     ___      |       |
-     * |       |       |       |
-     * 300 -|--|J|--|--| |--|--| |--|-
-     * |      _|_     _|_      |
-     * |      ___     ___      |
-     * |       |       |       |
-     * 600 -|-------|--| |--|-------|-
-     * |      _|_     _|_      |
-     * |      ___     ___      |
-     * |       |       |       |
-     * 900 -|-------|-------|-------|-
+     *     0      300     600     900
+     *  0 -|-------|-------|-------|-
+     *    _|_     _|_      |       |
+     *    _E_     ___      |       |
+     *     |       |       |       |
+     *300 -|--|J|--|--| |--|--| |--|-
+     *     |      _|_     _|_      |
+     *     |      ___     ___      |
+     *     |       |       |       |
+     *600 -|-------|--| |--|-------|-
+     *     |      _|_     _|_      |
+     *     |      ___     ___      |
+     *     |       |       |       |
+     *900 -|-------|-------|-------|-
      */
 
 
@@ -78,7 +79,7 @@ public class Grelha {
         walls = new Wall[17];           //17 walls
         defineWalls();
 
-        doors = new GridDoor[10];       //10 doors
+        doors = new GridDoor[11];       //10 doors + 1 computer
         defineDoors();
 
         rooms = new Room[9];            //9 rooms
@@ -119,7 +120,7 @@ public class Grelha {
 
         Picture p8grass0 = new Picture(rooms[8].getRoomPosition().getX(), rooms[8].getRoomPosition().getY(), "resources/Rooms/defaults/8grass0.jpg");
         rooms[8].setCurrentPic(p8grass0);
-        
+
         Picture p7class0 = new Picture(rooms[7].getRoomPosition().getX(), rooms[7].getRoomPosition().getY(), "resources/Rooms/defaults/7classroom0.jpg");
         rooms[7].setCurrentPic(p7class0);
 
@@ -139,7 +140,6 @@ public class Grelha {
         rooms[2].setCurrentPic(p2toilet0);
 
 
-
         Picture p1secret0 = new Picture(rooms[1].getRoomPosition().getX(), rooms[1].getRoomPosition().getY(), "resources/Rooms/defaults/1secretroom0.jpg");
         rooms[1].setCurrentPic(p1secret0);
 
@@ -148,10 +148,8 @@ public class Grelha {
 
     }
 
-
     //auxiliary method to put all the Doors into its array
     private void defineDoors() {
-
         //10 doors
         //VERTICAL DOORS
         Rectangle EXIT = new Rectangle(PADDING, 100 + PADDING, 25, 100);   //The exit door
@@ -173,7 +171,12 @@ public class Grelha {
         //group 2, the bottom
         Rectangle H2D2 = new Rectangle(PADDING + 400, 575 + PADDING, 100, 50);
 
-        Rectangle[] doorsrec = {EXIT, V1D1, V1D2, V1D3, V2D2, V2D3, JOKE, H1D2, H1D3, H2D2};
+        //The computer where the image will appear
+        Rectangle COMPUTER = new Rectangle(500 + PADDING, PADDING + 50, 50, 50);
+        COMPUTER.setColor(Color.YELLOW);
+        COMPUTER.draw();
+
+        Rectangle[] doorsrec = {EXIT, V1D1, V1D2, V1D3, V2D2, V2D3, JOKE, H1D2, H1D3, H2D2, COMPUTER};
         for (int i = 0; i < doorsrec.length; i++) {
             doorsrec[i].setColor(Color.BLUE);
             doorsrec[i].fill();
@@ -239,63 +242,49 @@ public class Grelha {
         }
     }
 
-
-//    private boolean intersectsDoors (GridDoor [] doors, double x, double y) {
-//
-//        for (int i = 0; i < doors.length; i++) {
-//
-//            if (collider.intersects(doors[i].getHitBoxPrompt(), x, y)) {
-//
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
-
-//    private boolean intersectsWalls (Wall [] walls, double x, double y) {
-//
-//        for (int i = 0; i < walls.length; i++) {
-//
-//            if (collider.intersects(walls[i].getRectangle(), x, y)) {
-//
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
+    //checks all the moves to see if sprite collides with anything that need to changed or invoqque methods
     public void move(Direction direction) {
-//        int x = sprite.getShape().getX();
-//        int y = sprite.getShape().getY();
-//        int w = sprite.getShape().getWidth() + x;
-//        int h = sprite.getShape().getHeight() + y;
-//        System.out.println(x);
-//        System.out.println(y);
-//        System.out.println(w);
-//        System.out.println(h);
 
 
         if (collider.intersectsWall(walls, sprite.getShape(), direction, mov)) {
             return;
         }
 
+        //Checks if the Sprite is near the computer table in computer room and prompts computer photo
+        if (collider.intersects(doors[10].getRoomDoor(), sprite.getShape(), direction, mov)) {
+            ComputerPhoto computer = new ComputerPhoto();
+
+            try {
+                computer.prompt();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+
         for (int i = 0; i < doors.length; i++) {
+
             if (collider.intersects(doors[i].getRoomDoor(), sprite.getShape(), direction, mov) &&
                     doors[i].isLocked()) {
-
                 return;
             }
         }
 
-        for (int i = 0; i < rooms.length; i++) {
-            if (collider.intersects(rooms[i].getRoomPosition(), sprite.getShape(), direction, mov) ){
+        for (
+                int i = 0;
+                i < rooms.length; i++)
+
+        {
+            if (collider.intersects(rooms[i].getRoomPosition(), sprite.getShape(), direction, mov)) {
                 rooms[i].printCurrentPic();
 
             }
         }
 
-        switch (direction) {
+
+        switch (direction)
+
+        {
             case UP:
                 sprite.getShape().translate(0, -mov);
                 sprite.getCurrentSprite().translate(0, -mov);
@@ -333,24 +322,5 @@ public class Grelha {
         }
         return false;
     }
-
-
-    //method that checks if sprite collides with elements
-
-
-//    public void colideDoors(){
-//
-//        if(){
-//
-//
-//            if(intersectsDoor
-//        }
-//
-//
-//
-//
-//
-//    }
-
 
 }

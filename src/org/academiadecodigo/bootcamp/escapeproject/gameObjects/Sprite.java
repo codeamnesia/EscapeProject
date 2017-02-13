@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.escapeproject.gameObjects;
 
 
-//import org.academiadecodigo.bootcamp.escapeproject.game.Grid;
+//import org.academiadecodigo.bootcamp.escapeproject.delete.Grid;
 import org.academiadecodigo.bootcamp.escapeproject.position.Direction;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Shape;

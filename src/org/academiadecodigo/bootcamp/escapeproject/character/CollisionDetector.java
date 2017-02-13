@@ -1,7 +1,7 @@
 //package org.academiadecodigo.bootcamp.escapeproject.Character;
 //
-//import org.academiadecodigo.bootcamp.escapeproject.game.Grid;
-//import org.academiadecodigo.bootcamp.escapeproject.game.GridPosition;
+//import org.academiadecodigo.bootcamp.escapeproject.delete.Grid;
+//import org.academiadecodigo.bootcamp.escapeproject.delete.GridPosition;
 //
 ///**
 // * Created by codecadet on 06/02/17.

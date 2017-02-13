@@ -87,7 +87,7 @@ public class FinalDoor implements MouseHandler, Scenable {
         scene.setColor(Color.BLACK);
         scene.draw();
 
-        background = new Picture(60.0, 60.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/finalback.png");
+        background = new Picture(60.0, 60.0, "resources/pics/finalback.png");
         background.draw();
 
         this.start();
@@ -97,10 +97,10 @@ public class FinalDoor implements MouseHandler, Scenable {
     public void start() throws InterruptedException {
 
 
-        smallMobille = new Picture(586.0, 503.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/mbsmall.png");
+        smallMobille = new Picture(586.0, 503.0, "resources/pics/mbsmall.png");
         smallMobille.draw();
 
-        bigMobille = new Picture(270.0, 80.0, "resources/org.academiadecodigo.bootcamp.escapeproject.resources.pics/mobile.png");
+        bigMobille = new Picture(270.0, 80.0, "resources/pics/mobile.png");
 
         mobile0 = new Rectangle(350, 509, 45, 30);
         mobile0.setColor(Color.YELLOW);

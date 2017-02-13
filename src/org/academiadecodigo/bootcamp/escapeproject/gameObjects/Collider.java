@@ -154,6 +154,8 @@ public class Collider {
                 (rx>=tx && rx<=tw && rh>=ty && rh<=th) ||       //tx < rx < tw  &&  ty < rh < th
                 (rw>=tx && rw<=tw && rh>=ty && rh<=th);         //tx < rw < tw  &&  ty < rh < th
     }
+
+
     public boolean intersects(GridDoor[] doors, Shape r, Direction direction, int mov) {
         for (GridDoor door : doors) {
             if (intersects(door.getRoomDoor(),r,direction,mov)) {

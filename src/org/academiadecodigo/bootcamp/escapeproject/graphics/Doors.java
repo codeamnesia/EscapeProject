@@ -36,7 +36,7 @@ public class Doors {
 
     private void init() throws InterruptedException{
 
-        //TODO só pode haver um objecto questions no jogo todo, criar este objecto na grid ou no game
+        //TODO só pode haver um objecto questions no jogo todo, criar este objecto na grid ou no delete
         questions = new Questions();
 
         //Creates Background picture for questions levels

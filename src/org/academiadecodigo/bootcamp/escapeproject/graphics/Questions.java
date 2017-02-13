@@ -17,7 +17,7 @@ public class Questions implements KeyboardHandler{
 
     private final String[][] Q_AND_A = {{"In what year was the first Apple computer released?" , "1976", "1982", "1974"},
             {"In a website browser address bar, what does 'www' stand for?", "World Wide Web", "Web World Wide", "World Web Wide"},
-            {"In what year did Nintendo release its first game console in North America?","1985","1987","1990"},
+            {"In what year did Nintendo release its first delete console in North America?","1985","1987","1990"},
             {"Steve Jobs, Steve Wozniak, and Ronald Wayne founded what company in 1976?","Apple Computer, Inc.","Sun Microsystems","Microsoft"},
             {"One kilobyte is equal to how many bytes?","1024","512","256"},
             {"What is the name given to an ancient analog computer that was discovered by divers off a Greek island in 1900?","Antikythera mechanism","Datapoint 2200","Apple One"},

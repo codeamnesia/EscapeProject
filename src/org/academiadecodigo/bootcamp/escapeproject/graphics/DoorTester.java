@@ -19,14 +19,14 @@ public class DoorTester {
 //        ComputerPhoto computerPhoto = new ComputerPhoto();
 //        computerPhoto.prompt();
 
-        FinalDoor f = new FinalDoor();
-
-        f.prompt();
+//        FinalDoor f = new FinalDoor();
+//
+//        f.prompt();
 
         Grelha grelha = new Grelha();
         grelha.init();
 
-        //TODO turn Gridodoo locked into true when tests finish
+        //TODO turn Gridodoors locked into true when tests finish
 
     }
 
